@@ -20,7 +20,7 @@ namespace PagHiper.Services
 			var request = new RestRequest(resource);
 			request.AddJsonBody(obj);
 
-			return client.Get(request);
+			return client.Post(request);
 		}
 	}
 }

@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using PagHiper.Models;
 using PagHiper.Services;
-using RestSharp;
 
 namespace PagHiper.BLL
 {
@@ -10,14 +9,28 @@ namespace PagHiper.BLL
 	{
 		public string GetPdfBoleto(Models.Boleto boleto)
 		{
-			var returnTicket = GetBoleto(boleto);
-			return returnTicket.create_request.bank_slip.url_slip_pdf;
+			try
+			{
+				var returnTicket = GetBoleto(boleto);
+				return returnTicket.create_request.bank_slip.url_slip_pdf;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		public string GetDigitableLineBoleto(Models.Boleto boleto)
 		{
-			var response = GetBoleto(boleto);
-			return response.create_request.bank_slip.digitable_line;
+			try
+			{
+				var response = GetBoleto(boleto);
+				return response.create_request.bank_slip.digitable_line;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		private BoletoResponse GetBoleto(Models.Boleto boleto)
@@ -28,7 +41,12 @@ namespace PagHiper.BLL
 
 			var returnTicket = JsonConvert.DeserializeObject<BoletoResponse>(response.Content);
 
-			return returnTicket ?? throw new NullReferenceException("Erro na geração do boleto");
+			if (returnTicket is not null && returnTicket.create_request.result == "reject")
+			{
+				throw new Exception($"Erro na requisição! - erro: {returnTicket.create_request.response_message}");
+			}
+
+			throw new NullReferenceException("Erro na geração do boleto!");
 
 		}
 	}

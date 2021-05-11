@@ -34,7 +34,7 @@ namespace PagHiper
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(276, 56);
+			this.button1.Location = new System.Drawing.Point(189, 48);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(226, 63);
 			this.button1.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace PagHiper
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(845, 744);
+			this.ClientSize = new System.Drawing.Size(657, 188);
 			this.Controls.Add(this.button1);
 			this.Name = "Form1";
 			this.Text = "Form1";

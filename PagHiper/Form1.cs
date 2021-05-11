@@ -19,12 +19,19 @@ namespace PagHiper
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			var boleto = BoletoRepository.GetBoleto();
-			
-			var pdfAddress = _boleto.GetPdfBoleto(boleto);
-			var linhaDigitavel = _boleto.GetDigitableLineBoleto(boleto);
+			try
+			{
+				var boleto = BoletoRepository.GetBoleto();
 
-			File.WriteAllText(@"C:\TEMP\Boleto.txt", $"Boleto número: {boleto.order_id} - PDF: {pdfAddress} | Linha Digitável: {linhaDigitavel}");
+				var pdfAddress = _boleto.GetPdfBoleto(boleto);
+				var linhaDigitavel = _boleto.GetDigitableLineBoleto(boleto);
+
+				File.WriteAllText(@"C:\TEMP\Boleto.txt", $"Boleto número: {boleto.order_id} - PDF: {pdfAddress} | Linha Digitável: {linhaDigitavel}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
