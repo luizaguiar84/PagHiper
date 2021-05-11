@@ -1,22 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestSharp;
+﻿using RestSharp;
 
 namespace PagHiper.Services
 {
 	public class RequestService
 	{
-		public static RestClient GetClient()
+		private const string PathApi = "https://api.paghiper.com/";
+		
+		private static RestClient GetClient()
 		{
-			var client = new RestClient
-			{
-				BaseUrl = new Uri("https://api.paghiper.com/")
-			};
+			var client = new RestClient(PathApi);
+
 			client.AddDefaultHeader("Accept", "Application/json");
 			return client;
+		}
+
+		public static IRestResponse GetResponse(string resource, object obj)
+		{
+			var client = GetClient();
+			var request = new RestRequest(resource);
+			request.AddJsonBody(obj);
+
+			return client.Get(request);
 		}
 	}
 }
