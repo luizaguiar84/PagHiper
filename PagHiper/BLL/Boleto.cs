@@ -1,7 +1,8 @@
 ﻿using System;
 using Newtonsoft.Json;
 using PagHiper.Models;
-using PagHiper.Services;
+using PagHiper.Requests;
+using PagHiper.Requests;
 
 namespace PagHiper.BLL
 {
@@ -35,7 +36,7 @@ namespace PagHiper.BLL
 
 		private BoletoResponse GetBoleto(Models.Boleto boleto)
 		{
-			var response = RequestService.GetResponse("/transaction/create/", boleto);
+			var response = DoRequest.Post("/transaction/create/", boleto);
 			if (!response.IsSuccessful)
 				throw new Exception("Erro na requisição!");
 
