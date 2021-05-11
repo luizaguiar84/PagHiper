@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PagHiper.Models;
 
 namespace PagHiper.Repositories
@@ -14,7 +15,7 @@ namespace PagHiper.Repositories
 				discount_cents = "",
 				fixed_description = false,
 				notification_url = "",
-				order_id = "",
+				order_id = Guid.NewGuid().ToString(),
 				payer_city = "",
 				payer_cpf_cnpj = "",
 				payer_complement = "",
