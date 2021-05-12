@@ -10,9 +10,11 @@ namespace PagHiper
 	public partial class Form1 : Form
 	{
 		private readonly BLL.Boleto _boleto;
+		private readonly BoletoRepository _repository;
 
 		public Form1()
 		{
+			this._repository = new BoletoRepository();
 			this._boleto = new BLL.Boleto();
 			InitializeComponent();
 		}
@@ -21,7 +23,7 @@ namespace PagHiper
 		{
 			try
 			{
-				var boleto = BoletoRepository.GetBoleto();
+				var boleto = _repository.GetBoleto();
 
 				var pdfAddress = _boleto.GetPdfBoleto(boleto);
 				var linhaDigitavel = _boleto.GetDigitableLineBoleto(boleto);

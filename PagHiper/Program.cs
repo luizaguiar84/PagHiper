@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagHiper.Repositories;
 
 namespace PagHiper
 {
@@ -14,6 +12,10 @@ namespace PagHiper
 		[STAThread]
 		static void Main()
 		{
+			using var dbContext = new PagHiperContext();
+			//cria o banco
+			dbContext.Database.EnsureCreated();
+
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PagHiper.Models
 {
@@ -9,6 +10,7 @@ namespace PagHiper.Models
 			this.items = new List<Item>();
 		}
 		public string apiKey { get; set; }
+		[Key]
 		public string order_id { get; set; }
 		public string payer_email { get; set; }
 		public string payer_name { get; set; }
@@ -35,6 +37,7 @@ namespace PagHiper.Models
 	{
 		public string description { get; set; }
 		public string quantity { get; set; }
+		[Key]
 		public string item_id { get; set; }
 		public string price_cents { get; set; }
 	}
