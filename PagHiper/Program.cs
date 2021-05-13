@@ -12,8 +12,8 @@ namespace PagHiper
 		[STAThread]
 		static void Main()
 		{
-			using var dbContext = new PagHiperContext();
 			//cria o banco
+			using var dbContext = new PagHiperContext();
 			dbContext.Database.EnsureCreated();
 
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);

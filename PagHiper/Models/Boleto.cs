@@ -40,6 +40,7 @@ namespace PagHiper.Models
 		[Key]
 		public string item_id { get; set; }
 		public string price_cents { get; set; }
+		public string Boleto_OrderId { get; set; }
 	}
 
 }

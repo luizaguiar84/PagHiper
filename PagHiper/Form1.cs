@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using PagHiper.Models;
 using PagHiper.Repositories;
 
 namespace PagHiper
@@ -25,6 +23,8 @@ namespace PagHiper
 			{
 				var boleto = _repository.GetBoleto();
 
+				this.txt_OrderId.Text = boleto.order_id;
+
 				var pdfAddress = _boleto.GetPdfBoleto(boleto);
 				var linhaDigitavel = _boleto.GetDigitableLineBoleto(boleto);
 
@@ -34,6 +34,11 @@ namespace PagHiper
 			{
 				MessageBox.Show(ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			_repository.Delete(this.txt_OrderId.Text);
 		}
 	}
 }
