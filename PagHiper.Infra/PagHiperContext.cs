@@ -20,8 +20,6 @@ namespace PagHiper.Infra
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//Map table names
-			//modelBuilder.Entity<Boleto>().ToTable("Boletos", "Boletos");
 			modelBuilder.Entity<Boleto>(entity =>
 			{
 				entity.HasKey(b => b.order_id);

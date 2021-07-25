@@ -1,12 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using PagHiper.Application.Interfaces;
 using PagHiper.Application.Requests;
 using PagHiper.Domain.Entities;
 using PagHiper.Dto.Boleto;
 
 namespace PagHiper.Application.Services
 {
-	public class BoletoService
+	public class BoletoService : IBoletoService
 	{
 		public string GetPdfBoleto(Boleto boleto)
 		{
@@ -34,7 +35,7 @@ namespace PagHiper.Application.Services
 			}
 		}
 
-		private BoletoDto GetBoleto(Boleto boleto)
+		public BoletoDto GetBoleto(Boleto boleto)
 		{
 			var response = DoRequest.Post("/transaction/create/", boleto);
 			if (!response.IsSuccessful)

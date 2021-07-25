@@ -1,0 +1,122 @@
+@model PagHiper.Domain.Entities.Boleto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Boleto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="apiKey" class="control-label"></label>
+                <input asp-for="apiKey" class="form-control" />
+                <span asp-validation-for="apiKey" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="order_id" />
+            <div class="form-group">
+                <label asp-for="payer_email" class="control-label"></label>
+                <input asp-for="payer_email" class="form-control" />
+                <span asp-validation-for="payer_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_name" class="control-label"></label>
+                <input asp-for="payer_name" class="form-control" />
+                <span asp-validation-for="payer_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_cpf_cnpj" class="control-label"></label>
+                <input asp-for="payer_cpf_cnpj" class="form-control" />
+                <span asp-validation-for="payer_cpf_cnpj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_phone" class="control-label"></label>
+                <input asp-for="payer_phone" class="form-control" />
+                <span asp-validation-for="payer_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_street" class="control-label"></label>
+                <input asp-for="payer_street" class="form-control" />
+                <span asp-validation-for="payer_street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_number" class="control-label"></label>
+                <input asp-for="payer_number" class="form-control" />
+                <span asp-validation-for="payer_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_complement" class="control-label"></label>
+                <input asp-for="payer_complement" class="form-control" />
+                <span asp-validation-for="payer_complement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_district" class="control-label"></label>
+                <input asp-for="payer_district" class="form-control" />
+                <span asp-validation-for="payer_district" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_city" class="control-label"></label>
+                <input asp-for="payer_city" class="form-control" />
+                <span asp-validation-for="payer_city" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_state" class="control-label"></label>
+                <input asp-for="payer_state" class="form-control" />
+                <span asp-validation-for="payer_state" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payer_zip_code" class="control-label"></label>
+                <input asp-for="payer_zip_code" class="form-control" />
+                <span asp-validation-for="payer_zip_code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="notification_url" class="control-label"></label>
+                <input asp-for="notification_url" class="form-control" />
+                <span asp-validation-for="notification_url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="discount_cents" class="control-label"></label>
+                <input asp-for="discount_cents" class="form-control" />
+                <span asp-validation-for="discount_cents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipping_price_cents" class="control-label"></label>
+                <input asp-for="shipping_price_cents" class="form-control" />
+                <span asp-validation-for="shipping_price_cents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipping_methods" class="control-label"></label>
+                <input asp-for="shipping_methods" class="form-control" />
+                <span asp-validation-for="shipping_methods" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="fixed_description" /> @Html.DisplayNameFor(model => model.fixed_description)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="days_due_date" class="control-label"></label>
+                <input asp-for="days_due_date" class="form-control" />
+                <span asp-validation-for="days_due_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type_bank_slip" class="control-label"></label>
+                <input asp-for="type_bank_slip" class="form-control" />
+                <span asp-validation-for="type_bank_slip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

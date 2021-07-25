@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PagHiper.Application.Interfaces;
+using PagHiper.Application.Services;
 using PagHiper.Infra;
 
 namespace PagHiper.Web
@@ -25,6 +27,11 @@ namespace PagHiper.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddDbContext<PagHiperContext>();
+
+			services.AddTransient<IBoletoService, BoletoService>();
+
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

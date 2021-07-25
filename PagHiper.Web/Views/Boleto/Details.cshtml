@@ -1,0 +1,133 @@
+@model PagHiper.Domain.Entities.Boleto
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Boleto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.apiKey)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.apiKey)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_cpf_cnpj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_cpf_cnpj)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_street)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_street)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_complement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_complement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_district)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_district)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_city)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_city)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_state)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_state)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payer_zip_code)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payer_zip_code)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notification_url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notification_url)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.discount_cents)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.discount_cents)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.shipping_price_cents)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.shipping_price_cents)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.shipping_methods)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.shipping_methods)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fixed_description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fixed_description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.days_due_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.days_due_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.type_bank_slip)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.type_bank_slip)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.order_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

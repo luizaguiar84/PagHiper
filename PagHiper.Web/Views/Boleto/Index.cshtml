@@ -1,0 +1,144 @@
+@model IEnumerable<PagHiper.Domain.Entities.Boleto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.apiKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_cpf_cnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_complement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_district)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payer_zip_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notification_url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_cents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipping_price_cents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipping_methods)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fixed_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days_due_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type_bank_slip)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.apiKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_cpf_cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_complement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_district)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payer_zip_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notification_url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_cents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_price_cents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_methods)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fixed_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.days_due_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type_bank_slip)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.order_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.order_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.order_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
