@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using PagHiper.Repositories;
+using PagHiper.Infra;
 
 namespace PagHiper
 {
