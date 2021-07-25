@@ -7,11 +7,11 @@ namespace PagHiper.Infra.Repositories.EntityFramework
 {
 	public class BoletoRepository
 	{
-		private readonly PagHiperContext _context;
+		private readonly CrudDbContext _context;
 
 		public BoletoRepository()
 		{
-			this._context = new PagHiperContext();
+			this._context = new CrudDbContext();
 		}
 
 		public void Delete(string orderId)

@@ -4,20 +4,10 @@ using PagHiper.Domain.Entities;
 
 namespace PagHiper.Infra
 {
-	public class PagHiperContext : DbContext
+	public class CrudDbContext : DbContext
 	{
-		public const string NomeBanco = "PagHiper.db";
 		public DbSet<Boleto> Boletos { get; set; }
-
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlite($"Filename={NomeBanco}", options =>
-			{
-				options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-			});
-			base.OnConfiguring(optionsBuilder);
-		}
-
+		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Boleto>(entity =>

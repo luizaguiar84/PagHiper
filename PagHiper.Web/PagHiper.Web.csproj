@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
+    <ProjectReference Include="..\Paghiper.Infra.Sqlite\Paghiper.Infra.Sqlite.csproj" />
     <ProjectReference Include="..\PagHiper.Infra\PagHiper.Infra.csproj" />
   </ItemGroup>
 

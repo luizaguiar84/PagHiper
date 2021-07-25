@@ -7,7 +7,7 @@ using PagHiper.Infra;
 
 namespace PagHiper.Infra.Migrations
 {
-    [DbContext(typeof(PagHiperContext))]
+    [DbContext(typeof(CrudDbContext))]
     [Migration("20210725175051_Atualizacao_colunas_banco")]
     partial class Atualizacao_colunas_banco
     {

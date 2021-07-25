@@ -6,7 +6,7 @@ using PagHiper.Infra;
 
 namespace PagHiper.Infra.Migrations
 {
-    [DbContext(typeof(PagHiperContext))]
+    [DbContext(typeof(CrudDbContext))]
     partial class PagHiperContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

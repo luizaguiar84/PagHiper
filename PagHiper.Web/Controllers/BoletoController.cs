@@ -8,16 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities;
 using PagHiper.Infra;
+using Paghiper.Infra.Sqlite.Context;
 
 namespace PagHiper.Web.Controllers
 {
     
     public class BoletoController : Controller
     {
-        private readonly PagHiperContext _context;
+        private readonly CrudDbSqlite _context;
         private readonly IBoletoService _boletoService;
 
-        public BoletoController(PagHiperContext context, IBoletoService boletoService)
+        public BoletoController(CrudDbSqlite context, IBoletoService boletoService)
         {
             _context = context;
             _boletoService = boletoService;

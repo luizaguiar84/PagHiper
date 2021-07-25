@@ -11,25 +11,34 @@ using System.Threading.Tasks;
 using PagHiper.Application.Interfaces;
 using PagHiper.Application.Services;
 using PagHiper.Infra;
+using Paghiper.Infra.Sqlite;
+using Paghiper.Infra.Sqlite.Context;
 
 namespace PagHiper.Web
 {
 	public class Startup
 	{
+		public IConfiguration Configuration { get; }
+
+		public DatabaseConfiguration DatabaseConfiguration { get; }
+
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
+			DatabaseConfiguration = new DatabaseConfiguration(configuration);
 		}
 
-		public IConfiguration Configuration { get; }
+		
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
-			services.AddDbContext<PagHiperContext>();
-
-			services.AddTransient<IBoletoService, BoletoService>();
+			
+			if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)
+				services.AddSqLiteDependency();
+			else
+				throw new NotSupportedException("No database configuration found");
 
 
 		}
@@ -47,7 +56,7 @@ namespace PagHiper.Web
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
-			using var dbContext = new PagHiperContext();
+			using var dbContext = new CrudDbSqlite();
 			//cria o banco
 			dbContext.Database.EnsureCreated();
 
