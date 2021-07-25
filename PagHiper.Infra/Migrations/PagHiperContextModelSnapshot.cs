@@ -13,98 +13,95 @@ namespace PagHiper.Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.8");
+                .HasAnnotation("ProductVersion", "3.1.17");
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Boleto", b =>
                 {
-                    b.Property<string>("order_id")
+                    b.Property<string>("OrderId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("apiKey")
+                    b.Property<string>("ApiKey")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("days_due_date")
+                    b.Property<string>("DaysDueDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("discount_cents")
+                    b.Property<string>("DiscountCents")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("fixed_description")
+                    b.Property<bool>("FixedDescription")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("notification_url")
+                    b.Property<string>("NotificationUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_city")
+                    b.Property<string>("PayerCity")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_complement")
+                    b.Property<string>("PayerComplement")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_cpf_cnpj")
+                    b.Property<string>("PayerCpfCnpj")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_district")
+                    b.Property<string>("PayerDistrict")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_email")
+                    b.Property<string>("PayerEmail")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_name")
+                    b.Property<string>("PayerName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_number")
+                    b.Property<string>("PayerNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_phone")
+                    b.Property<string>("PayerPhone")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_state")
+                    b.Property<string>("PayerState")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_street")
+                    b.Property<string>("PayerStreet")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("payer_zip_code")
+                    b.Property<string>("PayerZipCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("shipping_methods")
+                    b.Property<string>("ShippingMethods")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("shipping_price_cents")
+                    b.Property<string>("ShippingPriceCents")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("type_bank_slip")
+                    b.Property<string>("TypeBankSlip")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("order_id");
+                    b.HasKey("OrderId");
 
                     b.ToTable("Boletos");
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Item", b =>
                 {
-                    b.Property<string>("item_id")
+                    b.Property<string>("ItemId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Boleto_OrderId")
+                    b.Property<string>("BoletoOrderId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Boletoorder_id")
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("description")
+                    b.Property<string>("PriceCents")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("price_cents")
+                    b.Property<string>("Quantity")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("quantity")
-                        .HasColumnType("TEXT");
+                    b.HasKey("ItemId");
 
-                    b.HasKey("item_id");
-
-                    b.HasIndex("Boletoorder_id");
+                    b.HasIndex("BoletoOrderId");
 
                     b.ToTable("Item");
                 });
@@ -112,13 +109,8 @@ namespace PagHiper.Infra.Migrations
             modelBuilder.Entity("PagHiper.Domain.Entities.Item", b =>
                 {
                     b.HasOne("PagHiper.Domain.Entities.Boleto", null)
-                        .WithMany("items")
-                        .HasForeignKey("Boletoorder_id");
-                });
-
-            modelBuilder.Entity("PagHiper.Domain.Entities.Boleto", b =>
-                {
-                    b.Navigation("items");
+                        .WithMany("Items")
+                        .HasForeignKey("BoletoOrderId");
                 });
 #pragma warning restore 612, 618
         }

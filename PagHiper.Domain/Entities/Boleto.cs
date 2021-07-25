@@ -7,40 +7,40 @@ namespace PagHiper.Domain.Entities
 	{
 		public Boleto()
 		{
-			this.items = new List<Item>();
+			this.Items = new List<Item>();
 		}
-		public string apiKey { get; set; }
+		public string ApiKey { get; set; }
 		[Key]
-		public string order_id { get; set; }
-		public string payer_email { get; set; }
-		public string payer_name { get; set; }
-		public string payer_cpf_cnpj { get; set; }
-		public string payer_phone { get; set; }
-		public string payer_street { get; set; }
-		public string payer_number { get; set; }
-		public string payer_complement { get; set; }
-		public string payer_district { get; set; }
-		public string payer_city { get; set; }
-		public string payer_state { get; set; }
-		public string payer_zip_code { get; set; }
-		public string notification_url { get; set; }
-		public string discount_cents { get; set; }
-		public string shipping_price_cents { get; set; }
-		public string shipping_methods { get; set; }
-		public bool fixed_description { get; set; }
-		public string days_due_date { get; set; }
-		public string type_bank_slip { get; set; }
-		public IEnumerable<Item> items { get; set; }
+		public string OrderId { get; set; }
+		public string PayerEmail { get; set; }
+		public string PayerName { get; set; }
+		public string PayerCpfCnpj { get; set; }
+		public string PayerPhone { get; set; }
+		public string PayerStreet { get; set; }
+		public string PayerNumber { get; set; }
+		public string PayerComplement { get; set; }
+		public string PayerDistrict { get; set; }
+		public string PayerCity { get; set; }
+		public string PayerState { get; set; }
+		public string PayerZipCode { get; set; }
+		public string NotificationUrl { get; set; }
+		public string DiscountCents { get; set; }
+		public string ShippingPriceCents { get; set; }
+		public string ShippingMethods { get; set; }
+		public bool FixedDescription { get; set; }
+		public string DaysDueDate { get; set; }
+		public string TypeBankSlip { get; set; }
+		public IEnumerable<Item> Items { get; set; }
 	}
 
 	public class Item
 	{
-		public string description { get; set; }
-		public string quantity { get; set; }
+		public string Description { get; set; }
+		public string Quantity { get; set; }
 		[Key]
-		public string item_id { get; set; }
-		public string price_cents { get; set; }
-		public string Boleto_OrderId { get; set; }
+		public string ItemId { get; set; }
+		public string PriceCents { get; set; }
+		public string BoletoOrderId { get; set; }
 	}
 
 }

@@ -14,61 +14,61 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.apiKey)
+                @Html.DisplayNameFor(model => model.ApiKey)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_email)
+                @Html.DisplayNameFor(model => model.PayerEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_name)
+                @Html.DisplayNameFor(model => model.PayerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_cpf_cnpj)
+                @Html.DisplayNameFor(model => model.PayerCpfCnpj)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_phone)
+                @Html.DisplayNameFor(model => model.PayerPhone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_street)
+                @Html.DisplayNameFor(model => model.PayerStreet)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_number)
+                @Html.DisplayNameFor(model => model.PayerNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_complement)
+                @Html.DisplayNameFor(model => model.PayerComplement)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_district)
+                @Html.DisplayNameFor(model => model.PayerDistrict)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_city)
+                @Html.DisplayNameFor(model => model.PayerCity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_state)
+                @Html.DisplayNameFor(model => model.PayerState)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.payer_zip_code)
+                @Html.DisplayNameFor(model => model.PayerZipCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.notification_url)
+                @Html.DisplayNameFor(model => model.NotificationUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.discount_cents)
+                @Html.DisplayNameFor(model => model.DiscountCents)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.shipping_price_cents)
+                @Html.DisplayNameFor(model => model.ShippingPriceCents)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.shipping_methods)
+                @Html.DisplayNameFor(model => model.ShippingMethods)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fixed_description)
+                @Html.DisplayNameFor(model => model.FixedDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.days_due_date)
+                @Html.DisplayNameFor(model => model.DaysDueDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.type_bank_slip)
+                @Html.DisplayNameFor(model => model.TypeBankSlip)
             </th>
             <th></th>
         </tr>
@@ -77,66 +77,66 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.apiKey)
+                @Html.DisplayFor(modelItem => item.ApiKey)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_email)
+                @Html.DisplayFor(modelItem => item.PayerEmail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_name)
+                @Html.DisplayFor(modelItem => item.PayerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_cpf_cnpj)
+                @Html.DisplayFor(modelItem => item.PayerCpfCnpj)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_phone)
+                @Html.DisplayFor(modelItem => item.PayerPhone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_street)
+                @Html.DisplayFor(modelItem => item.PayerStreet)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_number)
+                @Html.DisplayFor(modelItem => item.PayerNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_complement)
+                @Html.DisplayFor(modelItem => item.PayerComplement)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_district)
+                @Html.DisplayFor(modelItem => item.PayerDistrict)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_city)
+                @Html.DisplayFor(modelItem => item.PayerCity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_state)
+                @Html.DisplayFor(modelItem => item.PayerState)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.payer_zip_code)
+                @Html.DisplayFor(modelItem => item.PayerZipCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.notification_url)
+                @Html.DisplayFor(modelItem => item.NotificationUrl)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.discount_cents)
+                @Html.DisplayFor(modelItem => item.DiscountCents)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.shipping_price_cents)
+                @Html.DisplayFor(modelItem => item.ShippingPriceCents)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.shipping_methods)
+                @Html.DisplayFor(modelItem => item.ShippingMethods)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fixed_description)
+                @Html.DisplayFor(modelItem => item.FixedDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.days_due_date)
+                @Html.DisplayFor(modelItem => item.DaysDueDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.type_bank_slip)
+                @Html.DisplayFor(modelItem => item.TypeBankSlip)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.order_id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.order_id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.order_id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
             </td>
         </tr>
 }

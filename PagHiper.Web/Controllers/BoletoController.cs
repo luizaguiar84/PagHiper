@@ -38,7 +38,7 @@ namespace PagHiper.Web.Controllers
             }
 
             var boleto = await _context.Boletos
-                .FirstOrDefaultAsync(m => m.order_id == id);
+                .FirstOrDefaultAsync(m => m.OrderId == id);
             if (boleto == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace PagHiper.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("apiKey,order_id,payer_email,payer_name,payer_cpf_cnpj,payer_phone,payer_street,payer_number,payer_complement,payer_district,payer_city,payer_state,payer_zip_code,notification_url,discount_cents,shipping_price_cents,shipping_methods,fixed_description,days_due_date,type_bank_slip")] Boleto boleto)
+        public async Task<IActionResult> Create([Bind("ApiKey,OrderId,payer_email,PayerName,PayerCpfCnpj,PayerPhone,PayerStreet,PayerNumber,PayerComplement,PayerDistrict,PayerCity,PayerState,PayerZipCode,NotificationUrl,DiscountCents,ShippingPriceCents,ShippingMethods,FixedDescription,DaysDueDate,TypeBankSlip")] Boleto boleto)
         {
             if (ModelState.IsValid)
             {
@@ -90,9 +90,9 @@ namespace PagHiper.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("apiKey,order_id,payer_email,payer_name,payer_cpf_cnpj,payer_phone,payer_street,payer_number,payer_complement,payer_district,payer_city,payer_state,payer_zip_code,notification_url,discount_cents,shipping_price_cents,shipping_methods,fixed_description,days_due_date,type_bank_slip")] Boleto boleto)
+        public async Task<IActionResult> Edit(string id, [Bind("ApiKey,OrderId,payer_email,PayerName,PayerCpfCnpj,PayerPhone,PayerStreet,PayerNumber,PayerComplement,PayerDistrict,PayerCity,PayerState,PayerZipCode,NotificationUrl,DiscountCents,ShippingPriceCents,ShippingMethods,FixedDescription,DaysDueDate,TypeBankSlip")] Boleto boleto)
         {
-            if (id != boleto.order_id)
+            if (id != boleto.OrderId)
             {
                 return NotFound();
             }
@@ -106,7 +106,7 @@ namespace PagHiper.Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BoletoExists(boleto.order_id))
+                    if (!BoletoExists(boleto.OrderId))
                     {
                         return NotFound();
                     }
@@ -129,7 +129,7 @@ namespace PagHiper.Web.Controllers
             }
 
             var boleto = await _context.Boletos
-                .FirstOrDefaultAsync(m => m.order_id == id);
+                .FirstOrDefaultAsync(m => m.OrderId == id);
             if (boleto == null)
             {
                 return NotFound();
@@ -151,7 +151,7 @@ namespace PagHiper.Web.Controllers
 
         private bool BoletoExists(string id)
         {
-            return _context.Boletos.Any(e => e.order_id == id);
+            return _context.Boletos.Any(e => e.OrderId == id);
         }
     }
 }

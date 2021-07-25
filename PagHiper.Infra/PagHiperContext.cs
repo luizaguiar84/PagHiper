@@ -22,8 +22,8 @@ namespace PagHiper.Infra
 		{
 			modelBuilder.Entity<Boleto>(entity =>
 			{
-				entity.HasKey(b => b.order_id);
-				entity.HasMany(b => b.items);
+				entity.HasKey(b => b.OrderId);
+				entity.HasMany(b => b.Items);
 			});
 			base.OnModelCreating(modelBuilder);
 		}
