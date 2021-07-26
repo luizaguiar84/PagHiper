@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
     <ProjectReference Include="..\PagHiper.Domain\PagHiper.Domain.csproj" />
     <ProjectReference Include="..\PagHiper.Dto\PagHiper.Dto.csproj" />
   </ItemGroup>

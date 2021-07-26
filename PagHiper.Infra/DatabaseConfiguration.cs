@@ -19,6 +19,10 @@ namespace PagHiper.Infra
 			{
 				DatabaseType = DatabaseType.Sqlite;
 			}
+			else if (DatabaseType.SqlServer.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
+			{
+				DatabaseType = DatabaseType.SqlServer;
+			}
 			else
 			{
 				throw new NotSupportedException($"Invalid ConnectionString name '{ConnectionStringName}'.");
@@ -30,6 +34,7 @@ namespace PagHiper.Infra
 	}
 	public enum DatabaseType
 	{
-		Sqlite
+		Sqlite,
+		SqlServer
 	}
 }

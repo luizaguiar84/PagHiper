@@ -1,25 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PagHiper.Application.Interfaces;
-using PagHiper.Application.Services;
 using PagHiper.Infra;
 using Paghiper.Infra.Sqlite;
-using Paghiper.Infra.Sqlite.Context;
 
 namespace PagHiper.Web
 {
 	public class Startup
 	{
 		public IConfiguration Configuration { get; }
-
 		public DatabaseConfiguration DatabaseConfiguration { get; }
 
 		public Startup(IConfiguration configuration)
@@ -28,7 +20,6 @@ namespace PagHiper.Web
 			DatabaseConfiguration = new DatabaseConfiguration(configuration);
 		}
 
-		
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
@@ -36,7 +27,7 @@ namespace PagHiper.Web
 			services.AddControllersWithViews();
 			
 			if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)
-				services.AddSqLiteDependency();
+				services.AddSqLiteDependency(DatabaseConfiguration);
 			else
 				throw new NotSupportedException("No database configuration found");
 
@@ -56,10 +47,10 @@ namespace PagHiper.Web
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
-			using var dbContext = new CrudDbSqlite();
-			//cria o banco
-			dbContext.Database.EnsureCreated();
-
+			//using var dbContext = new SqliteCrudDbContext();
+			////cria o banco
+			//dbContext.Database.EnsureCreated();
+			
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
@@ -67,6 +58,8 @@ namespace PagHiper.Web
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			app.ApplicationServices.MigrateDatabase();
 
 			app.UseEndpoints(endpoints =>
 			{

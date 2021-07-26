@@ -9,9 +9,9 @@ namespace PagHiper.Infra.Repositories.EntityFramework
 	{
 		private readonly CrudDbContext _context;
 
-		public BoletoRepository()
+		public BoletoRepository(CrudDbContext context)
 		{
-			this._context = new CrudDbContext();
+			this._context = context;
 		}
 
 		public void Delete(string orderId)
@@ -83,7 +83,7 @@ namespace PagHiper.Infra.Repositories.EntityFramework
 					new Item
 					{
 						Description = "Descricao",
-						ItemId = Guid.NewGuid().ToString(),
+						Id = Guid.NewGuid(),
 						PriceCents = "1000",
 						Quantity = "1"
 					}

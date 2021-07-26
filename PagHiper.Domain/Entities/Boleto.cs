@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PagHiper.Domain.Entities
 {
-	public class Boleto
+	public class Boleto : BaseEntity
 	{
 		public Boleto()
 		{
@@ -33,12 +33,10 @@ namespace PagHiper.Domain.Entities
 		public IEnumerable<Item> Items { get; set; }
 	}
 
-	public class Item
+	public class Item : BaseEntity
 	{
 		public string Description { get; set; }
 		public string Quantity { get; set; }
-		[Key]
-		public string ItemId { get; set; }
 		public string PriceCents { get; set; }
 		public string BoletoOrderId { get; set; }
 	}

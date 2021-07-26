@@ -1,99 +1,96 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities;
 using PagHiper.Infra;
 using Paghiper.Infra.Sqlite.Context;
 
 namespace PagHiper.Web.Controllers
 {
-    
-    public class BoletoController : Controller
+    public class AlunosController : Controller
     {
         private readonly CrudDbContext _context;
-        private readonly IBoletoService _boletoService;
 
-        public BoletoController(CrudDbContext context, IBoletoService boletoService)
+        public AlunosController(CrudDbContext context)
         {
             _context = context;
-            _boletoService = boletoService;
         }
 
-        // GET: Boleto
+        // GET: Alunos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Boletos.ToListAsync());
+            return View(await _context.Alunos.ToListAsync());
         }
 
-        // GET: Boleto/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Alunos/Details/5
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (boleto == null)
+            var aluno = await _context.Alunos
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(boleto);
+            return View(aluno);
         }
 
-        // GET: Boleto/Create
+        // GET: Alunos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Boleto/Create
+        // POST: Alunos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApiKey,OrderId,payer_email,PayerName,PayerCpfCnpj,PayerPhone,PayerStreet,PayerNumber,PayerComplement,PayerDistrict,PayerCity,PayerState,PayerZipCode,NotificationUrl,DiscountCents,ShippingPriceCents,ShippingMethods,FixedDescription,DaysDueDate,TypeBankSlip")] Boleto boleto)
+        public async Task<IActionResult> Create([Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(boleto);
+                aluno.Id = Guid.NewGuid();
+                _context.Add(aluno);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(boleto);
+            return View(aluno);
         }
 
-        // GET: Boleto/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Alunos/Edit/5
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos.FindAsync(id);
-            if (boleto == null)
+            var aluno = await _context.Alunos.FindAsync(id);
+            if (aluno == null)
             {
                 return NotFound();
             }
-            return View(boleto);
+            return View(aluno);
         }
 
-        // POST: Boleto/Edit/5
+        // POST: Alunos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ApiKey,OrderId,payer_email,PayerName,PayerCpfCnpj,PayerPhone,PayerStreet,PayerNumber,PayerComplement,PayerDistrict,PayerCity,PayerState,PayerZipCode,NotificationUrl,DiscountCents,ShippingPriceCents,ShippingMethods,FixedDescription,DaysDueDate,TypeBankSlip")] Boleto boleto)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
         {
-            if (id != boleto.OrderId)
+            if (id != aluno.Id)
             {
                 return NotFound();
             }
@@ -102,12 +99,12 @@ namespace PagHiper.Web.Controllers
             {
                 try
                 {
-                    _context.Update(boleto);
+                    _context.Update(aluno);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BoletoExists(boleto.OrderId))
+                    if (!AlunoExists(aluno.Id))
                     {
                         return NotFound();
                     }
@@ -118,41 +115,41 @@ namespace PagHiper.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(boleto);
+            return View(aluno);
         }
 
-        // GET: Boleto/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Alunos/Delete/5
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (boleto == null)
+            var aluno = await _context.Alunos
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(boleto);
+            return View(aluno);
         }
 
-        // POST: Boleto/Delete/5
+        // POST: Alunos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var boleto = await _context.Boletos.FindAsync(id);
-            _context.Boletos.Remove(boleto);
+            var aluno = await _context.Alunos.FindAsync(id);
+            _context.Alunos.Remove(aluno);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BoletoExists(string id)
+        private bool AlunoExists(Guid id)
         {
-            return _context.Boletos.Any(e => e.OrderId == id);
+            return _context.Alunos.Any(e => e.Id == id);
         }
     }
 }

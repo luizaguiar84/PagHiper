@@ -7,7 +7,15 @@ namespace PagHiper.Infra
 	public class CrudDbContext : DbContext
 	{
 		public DbSet<Boleto> Boletos { get; set; }
-		
+		public DbSet<Aluno> Alunos{ get; set; }
+		//public DbSet<AlunoContato> AlunoContatos{ get; set; }
+		//public DbSet<AlunoMatricula> AlunoMatriculas{ get; set; }
+		public CrudDbContext()
+		{ }
+
+		public CrudDbContext(DbContextOptions options) : base(options)
+		{ }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Boleto>(entity =>
