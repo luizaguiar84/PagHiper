@@ -70,21 +70,16 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// POST: Alunos/Edit/5
-		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(Guid id, [Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
+		public async Task<IActionResult> Edit(Guid id, Aluno aluno)
 		{
 			if (id != aluno.Id)
-			{
 				return NotFound();
-			}
 
 			if (ModelState.IsValid)
-			{
 				_alunoRepository.Update(aluno);
-			}
+
 			return View(aluno);
 		}
 
@@ -97,7 +92,7 @@ namespace PagHiper.Web.Controllers
 			}
 
 			_alunoRepository.Delete(id);
-			
+
 
 			return View();
 		}
