@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace PagHiper.Domain.Entities
+namespace PagHiper.Domain.Entities.Common
 {
 	public class Endereco : BaseEntity
 	{
 		public Guid AlunoId { get; set; }
+		public string Cep { get; set; }
 		public string Rua { get; set; }
 		public string Numero { get; set; }
 		public string Complemento { get; set; }

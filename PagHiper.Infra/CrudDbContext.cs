@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities;
+using PagHiper.Domain.Entities.Aluno;
 
 namespace PagHiper.Infra
 {

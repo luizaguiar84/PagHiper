@@ -1,155 +1,121 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using PagHiper.Domain.Entities;
-using PagHiper.Infra;
-using Paghiper.Infra.Sqlite.Context;
+using PagHiper.Domain.Entities.Aluno;
+using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Web.Controllers
 {
-    public class AlunosController : Controller
-    {
-        private readonly CrudDbContext _context;
+	public class AlunosController : Controller
+	{
+		private readonly IAlunoRepository _alunoRepository;
 
-        public AlunosController(CrudDbContext context)
-        {
-            _context = context;
-        }
+		public AlunosController(IAlunoRepository alunoRepository)
+		{
+			_alunoRepository = alunoRepository;
+		}
 
-        // GET: Alunos
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Alunos.ToListAsync());
-        }
+		// GET: Alunos
+		public async Task<IActionResult> Index()
+		{
+			var listaAlunos = _alunoRepository.GetAll();
+			return View(listaAlunos);
+		}
 
-        // GET: Alunos/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: Alunos/Details/5
+		public async Task<IActionResult> Details(Guid id)
+		{
+			if (id == null)
+				return NotFound();
 
-            var aluno = await _context.Alunos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (aluno == null)
-            {
-                return NotFound();
-            }
+			var aluno = _alunoRepository.GetById(id);
 
-            return View(aluno);
-        }
+			if (aluno == null)
+				return NotFound();
 
-        // GET: Alunos/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+			return View(aluno);
+		}
 
-        // POST: Alunos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
-        {
-            if (ModelState.IsValid)
-            {
-                aluno.Id = Guid.NewGuid();
-                _context.Add(aluno);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(aluno);
-        }
+		// GET: Alunos/Create
+		public IActionResult Create()
+		{
+			return View();
+		}
 
-        // GET: Alunos/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// POST: Alunos/Create
+		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(Aluno aluno)
+		{
+			if (ModelState.IsValid)
+			{
+				_alunoRepository.Add(aluno);
+				return RedirectToAction(nameof(Index));
+			}
+			return View(aluno);
+		}
 
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
-            {
-                return NotFound();
-            }
-            return View(aluno);
-        }
+		// GET: Alunos/Edit/5
+		public async Task<IActionResult> Edit(Guid id)
+		{
 
-        // POST: Alunos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
-        {
-            if (id != aluno.Id)
-            {
-                return NotFound();
-            }
+			var aluno = _alunoRepository.GetById(id);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(aluno);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AlunoExists(aluno.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(aluno);
-        }
+			if (aluno == null)
+				return NotFound();
 
-        // GET: Alunos/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+			return View(aluno);
+		}
 
-            var aluno = await _context.Alunos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (aluno == null)
-            {
-                return NotFound();
-            }
+		// POST: Alunos/Edit/5
+		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit(Guid id, [Bind("Cpf,Rg,Nome,DataNascimento,DataCadastro,DataAtualizacao,ResponsavelNome,ResponsavelCpf,ResponsavelParentesco,ResponsavelTelefone,StatusCadastro,StatusFinanceiro,Observacao,IsActive,Id")] Aluno aluno)
+		{
+			if (id != aluno.Id)
+			{
+				return NotFound();
+			}
 
-            return View(aluno);
-        }
+			if (ModelState.IsValid)
+			{
+				_alunoRepository.Update(aluno);
+			}
+			return View(aluno);
+		}
 
-        // POST: Alunos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var aluno = await _context.Alunos.FindAsync(id);
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+		// GET: Alunos/Delete/5
+		public async Task<IActionResult> Delete(Guid id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-        private bool AlunoExists(Guid id)
-        {
-            return _context.Alunos.Any(e => e.Id == id);
-        }
-    }
+			_alunoRepository.Delete(id);
+			
+
+			return View();
+		}
+
+		//// POST: Alunos/Delete/5
+		//[HttpPost, ActionName("Delete")]
+		//[ValidateAntiForgeryToken]
+		//public async Task<IActionResult> DeleteConfirmed(Guid id)
+		//{
+		//	var aluno = await _alunoRepository.Alunos.FindAsync(id);
+		//	_alunoRepository.Alunos.Remove(aluno);
+		//	await _alunoRepository.SaveChangesAsync();
+		//	return RedirectToAction(nameof(Index));
+		//}
+
+		//private bool AlunoExists(Guid id)
+		//{
+		//	return _alunoRepository.Alunos.Any(e => e.Id == id);
+		//}
+	}
 }

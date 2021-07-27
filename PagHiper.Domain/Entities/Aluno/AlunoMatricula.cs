@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PagHiper.Domain.Entities
+namespace PagHiper.Domain.Entities.Aluno
 {
 	public class AlunoMatricula : BaseEntity
 	{
@@ -12,7 +10,7 @@ namespace PagHiper.Domain.Entities
 		public string PagamentoTipoId { get; set; }
 		public string PagamentoId { get; set; }
 		public string CursoId { get; set; }
-		public DateTime? DataMatricula { get; set; }
+		public DateTimeOffset? DataMatricula { get; set; }
 		public string CampanhaId { get; set; }
 	}
 }

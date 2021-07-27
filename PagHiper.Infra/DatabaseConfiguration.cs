@@ -19,9 +19,9 @@ namespace PagHiper.Infra
 			{
 				DatabaseType = DatabaseType.Sqlite;
 			}
-			else if (DatabaseType.SqlServer.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
+			else if (DatabaseType.MySQL.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
 			{
-				DatabaseType = DatabaseType.SqlServer;
+				DatabaseType = DatabaseType.MySQL;
 			}
 			else
 			{
@@ -35,6 +35,6 @@ namespace PagHiper.Infra
 	public enum DatabaseType
 	{
 		Sqlite,
-		SqlServer
+		MySQL
 	}
 }

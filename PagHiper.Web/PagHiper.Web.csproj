@@ -6,12 +6,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
+    <ProjectReference Include="..\PagHiper.Infra.MySql\PagHiper.Infra.MySql.csproj" />
     <ProjectReference Include="..\Paghiper.Infra.Sqlite\Paghiper.Infra.Sqlite.csproj" />
     <ProjectReference Include="..\PagHiper.Infra\PagHiper.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

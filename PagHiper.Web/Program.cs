@@ -22,6 +22,7 @@ namespace PagHiper.Web
 				{
 					webBuilder
 					.UseKestrel()
+					.UseIISIntegration()
 					.UseStartup<Startup>();
 				});
 	}

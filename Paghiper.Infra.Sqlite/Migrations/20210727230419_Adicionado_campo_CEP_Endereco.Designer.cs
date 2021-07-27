@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Paghiper.Infra.Sqlite.Context;
 
 namespace Paghiper.Infra.Sqlite.Migrations
 {
     [DbContext(typeof(SqliteCrudDbContext))]
-    partial class SqliteCrudDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210727230419_Adicionado_campo_CEP_Endereco")]
+    partial class Adicionado_campo_CEP_Endereco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

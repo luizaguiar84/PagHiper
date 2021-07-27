@@ -1,7 +1,7 @@
-﻿@model PagHiper.Domain.Entities.Aluno
+﻿@model PagHiper.Domain.Entities.Aluno.Aluno
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastro de Alunos";
 }
 
 <h1>Create</h1>
@@ -77,11 +77,45 @@
                 <input asp-for="Observacao" class="form-control" />
                 <span asp-validation-for="Observacao" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
+            
+            <h2>Endereço</h2>
+
+            <div class="form-group">
+                <label asp-for="Endereco.Cep" class="control-label"></label>
+                <input asp-for="Endereco.Cep" class="form-control" />
+                <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Rua" class="control-label"></label>
+                <input asp-for="Endereco.Rua" class="form-control" />
+                <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Numero" class="control-label"></label>
+                <input asp-for="Endereco.Numero" class="form-control" />
+                <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Complemento" class="control-label"></label>
+                <input asp-for="Endereco.Complemento" class="form-control" />
+                <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="Endereco.Bairro" class="control-label"></label>
+                <input asp-for="Endereco.Bairro" class="form-control" />
+                <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Cidade" class="control-label"></label>
+                <input asp-for="Endereco.Cidade" class="form-control" />
+                <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Uf" class="control-label"></label>
+                <input asp-for="Endereco.Uf" class="form-control" />
+                <span asp-validation-for="Endereco.Uf" class="text-danger"></span>
+            </div>
+           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

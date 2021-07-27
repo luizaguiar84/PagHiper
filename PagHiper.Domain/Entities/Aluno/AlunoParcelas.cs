@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PagHiper.Domain.Entities
+namespace PagHiper.Domain.Entities.Aluno
 {
 	public class AlunoParcelas : BaseEntity
 	{
