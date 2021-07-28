@@ -12,5 +12,7 @@ namespace PagHiper.Domain.Entities.Aluno
 		public string CursoId { get; set; }
 		public DateTimeOffset? DataMatricula { get; set; }
 		public string CampanhaId { get; set; }
+		public Aluno Aluno { get; set; }
+
 	}
 }

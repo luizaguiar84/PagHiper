@@ -7,5 +7,6 @@ namespace PagHiper.Domain.Entities.Aluno
 		public DateTimeOffset DataIngresso { get; set; }
 		public Turma Turma { get; set; }
 		public bool Status { get; set; }
+		public Aluno Aluno { get; set; }
 	}
 }

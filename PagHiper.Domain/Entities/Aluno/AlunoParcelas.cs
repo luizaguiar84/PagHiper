@@ -14,5 +14,7 @@ namespace PagHiper.Domain.Entities.Aluno
 		public decimal ValorEfetuado { get; set; }
 		public int NumeroParcelas { get; set; }
 		public int NumeroTotalParcelas { get; set; }
+		public Aluno Aluno { get; set; }
+
 	}
 }

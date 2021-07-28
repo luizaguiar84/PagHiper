@@ -9,11 +9,7 @@ namespace PagHiper.Domain.Entities.Aluno
 	{
 		public Aluno()
 		{
-			this.Endereco = new Endereco();
-			this.Contatos = new List<AlunoContato>();
-			this.Parcelas = new AlunoParcelas();
-			this.Matricula = new AlunoMatricula();
-			this.Turmas = new List<AlunoTurma>();
+			
 		}
 		public string Cpf { get; set; }
 		public string Rg { get; set; }
