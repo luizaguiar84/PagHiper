@@ -52,6 +52,9 @@ namespace PagHiper.Infra.Repositories
 					_context.Alunos
 						.Include(a => a.Endereco)
 						.Include(a => a.Contatos)
+						.Include(a => a.Parcelas)
+						.Include(a => a.Matricula)
+						.Include(a => a.Turmas)
 						.SingleOrDefault(a => a.Id == alunoId);
 				
 				return aluno;

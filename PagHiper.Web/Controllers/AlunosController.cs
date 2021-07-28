@@ -78,7 +78,9 @@ namespace PagHiper.Web.Controllers
 				return NotFound();
 
 			if (ModelState.IsValid)
+			{
 				_alunoRepository.Update(aluno);
+			}
 
 			return View(aluno);
 		}

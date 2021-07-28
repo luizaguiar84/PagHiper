@@ -122,6 +122,13 @@
             </div>
 
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Endereco.AlunoId" />
+            <input type="hidden" asp-for="Parcelas.AlunoId" />
+            <input type="hidden" asp-for="Matricula.AlunoId" />
+            <input type="hidden" asp-for="Turmas" value="@Model.Turmas" />
+            <input type="hidden" asp-for="Contatos" value="@Model.Contatos" />
+
+
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
