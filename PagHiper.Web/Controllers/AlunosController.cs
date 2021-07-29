@@ -15,14 +15,14 @@ namespace PagHiper.Web.Controllers
       _alunoRepository = alunoRepository;
     }
 
-    // GET: Alunos
+    // GET: Aluno
     public async Task<IActionResult> Index()
     {
       var listaAlunos = _alunoRepository.GetAll();
       return View(listaAlunos);
     }
 
-    // GET: Alunos/Details/5
+    // GET: Aluno/Details/5
     public async Task<IActionResult> Details(Guid id)
     {
       if (id == null)
@@ -36,13 +36,13 @@ namespace PagHiper.Web.Controllers
       return View(aluno);
     }
 
-    // GET: Alunos/Create
+    // GET: Aluno/Create
     public IActionResult Create()
     {
       return View();
     }
 
-    // POST: Alunos/Create
+    // POST: Aluno/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to, for 
     // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -57,7 +57,7 @@ namespace PagHiper.Web.Controllers
       return View(aluno);
     }
 
-    // GET: Alunos/Edit/5
+    // GET: Aluno/Edit/5
     public async Task<IActionResult> Edit(Guid id)
     {
 
@@ -69,7 +69,7 @@ namespace PagHiper.Web.Controllers
       return View(aluno);
     }
 
-    // POST: Alunos/Edit/5
+    // POST: Aluno/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Guid id, Aluno aluno)
@@ -85,7 +85,7 @@ namespace PagHiper.Web.Controllers
       return View(aluno);
     }
 
-    // GET: Alunos/Delete/5
+    // GET: Aluno/Delete/5
     public async Task<IActionResult> Delete(Guid id)
     {
       if (id == null)
@@ -99,20 +99,20 @@ namespace PagHiper.Web.Controllers
       return View();
     }
 
-    //// POST: Alunos/Delete/5
+    //// POST: Aluno/Delete/5
     //[HttpPost, ActionName("Delete")]
     //[ValidateAntiForgeryToken]
     //public async Task<IActionResult> DeleteConfirmed(Guid id)
     //{
-    //	var aluno = await _alunoRepository.Alunos.FindAsync(id);
-    //	_alunoRepository.Alunos.Remove(aluno);
+    //	var aluno = await _alunoRepository.Aluno.FindAsync(id);
+    //	_alunoRepository.Aluno.Remove(aluno);
     //	await _alunoRepository.SaveChangesAsync();
     //	return RedirectToAction(nameof(Index));
     //}
 
     //private bool AlunoExists(Guid id)
     //{
-    //	return _alunoRepository.Alunos.Any(e => e.Id == id);
+    //	return _alunoRepository.Aluno.Any(e => e.Id == id);
     //}
   }
 }

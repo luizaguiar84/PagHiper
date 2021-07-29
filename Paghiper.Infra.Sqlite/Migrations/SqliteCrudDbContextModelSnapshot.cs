@@ -66,7 +66,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Alunos");
+                    b.ToTable("Aluno");
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoContato", b =>
@@ -75,7 +75,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("AlunoId")
+                    b.Property<Guid?>("AlunoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Contato")
@@ -270,7 +270,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.ToTable("Boletos");
+                    b.ToTable("Boleto");
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Common.Endereco", b =>
@@ -352,16 +352,15 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoContato", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", null)
+                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithMany("Contatos")
                         .HasForeignKey("AlunoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoMatricula", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", null)
+                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithOne("Matricula")
                         .HasForeignKey("PagHiper.Domain.Entities.Aluno.AlunoMatricula", "AlunoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -370,7 +369,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoParcelas", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", null)
+                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithOne("Parcelas")
                         .HasForeignKey("PagHiper.Domain.Entities.Aluno.AlunoParcelas", "AlunoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -379,9 +378,10 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoTurma", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", null)
+                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithMany("Turmas")
-                        .HasForeignKey("AlunoId");
+                        .HasForeignKey("AlunoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PagHiper.Domain.Entities.Turma", "Turma")
                         .WithMany()
@@ -390,7 +390,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Common.Endereco", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", null)
+                    b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithOne("Endereco")
                         .HasForeignKey("PagHiper.Domain.Entities.Common.Endereco", "AlunoId")
                         .OnDelete(DeleteBehavior.Cascade)

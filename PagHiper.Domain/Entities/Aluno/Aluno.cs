@@ -26,8 +26,8 @@ namespace PagHiper.Domain.Entities.Aluno
 		public string ResponsavelCpf { get; set; }
 		public string ResponsavelParentesco { get; set; }
 		public string ResponsavelTelefone { get; set; }
-		public char StatusCadastro { get; set; }
-		public char StatusFinanceiro { get; set; }
+		public bool StatusCadastro { get; set; }
+		public bool StatusFinanceiro { get; set; }
 		[DisplayName("Observação")]
 		public string Observacao { get; set; }
 		public bool IsActive { get; set; }

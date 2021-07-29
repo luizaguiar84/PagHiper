@@ -21,7 +21,7 @@ namespace PagHiper.Infra.Repositories
 			try
 			{
 				var aluno = GetById(alunoId);
-				_context.Alunos.Remove(aluno);
+				_context.Aluno.Remove(aluno);
 				_context.SaveChanges();
 			}
 			catch (Exception)
@@ -49,7 +49,7 @@ namespace PagHiper.Infra.Repositories
 			try
 			{
 				var aluno = 
-					_context.Alunos
+					_context.Aluno
 						.Include(a => a.Endereco)
 						.Include(a => a.Contatos)
 						.Include(a => a.Parcelas)
@@ -68,13 +68,13 @@ namespace PagHiper.Infra.Repositories
 
 		public List<Aluno> GetAll()
 		{
-			var listaAlunos = _context.Alunos.ToList();
+			var listaAlunos = _context.Aluno.ToList();
 			return listaAlunos;
 		}
 
 		public Aluno Update(Aluno aluno)
 		{
-			var ret = _context.Alunos.Update(aluno);
+			var ret = _context.Aluno.Update(aluno);
 			_context.SaveChanges();
 
 			return ret.Entity;

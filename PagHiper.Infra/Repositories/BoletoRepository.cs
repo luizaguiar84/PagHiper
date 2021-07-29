@@ -20,7 +20,7 @@ namespace PagHiper.Infra.Repositories
 			try
 			{
 				var boleto = GetById(orderId);
-				_context.Boletos.Remove(boleto);
+				_context.Boleto.Remove(boleto);
 				_context.SaveChanges();
 			}
 			catch (Exception)
@@ -46,7 +46,7 @@ namespace PagHiper.Infra.Repositories
 		{
 			try
 			{
-				return _context.Boletos.Single(b => b.OrderId == orderId);
+				return _context.Boleto.Single(b => b.OrderId == orderId);
 			}
 
 			catch (Exception)
@@ -58,7 +58,7 @@ namespace PagHiper.Infra.Repositories
 		public List<Boleto> GetAll()
 		{
 
-			var listaBoletos = _context.Boletos.ToList();
+			var listaBoletos = _context.Boleto.ToList();
 
 			return listaBoletos;
 			//var boleto = new Boleto

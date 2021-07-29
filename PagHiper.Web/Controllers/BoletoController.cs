@@ -27,7 +27,7 @@ namespace PagHiper.Web.Controllers
         // GET: Boleto
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Boletos.ToListAsync());
+            return View(await _context.Boleto.ToListAsync());
         }
 
         // GET: Boleto/Details/5
@@ -38,7 +38,7 @@ namespace PagHiper.Web.Controllers
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos
+            var boleto = await _context.Boleto
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (boleto == null)
             {
@@ -78,7 +78,7 @@ namespace PagHiper.Web.Controllers
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos.FindAsync(id);
+            var boleto = await _context.Boleto.FindAsync(id);
             if (boleto == null)
             {
                 return NotFound();
@@ -129,7 +129,7 @@ namespace PagHiper.Web.Controllers
                 return NotFound();
             }
 
-            var boleto = await _context.Boletos
+            var boleto = await _context.Boleto
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (boleto == null)
             {
@@ -144,15 +144,15 @@ namespace PagHiper.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var boleto = await _context.Boletos.FindAsync(id);
-            _context.Boletos.Remove(boleto);
+            var boleto = await _context.Boleto.FindAsync(id);
+            _context.Boleto.Remove(boleto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BoletoExists(string id)
         {
-            return _context.Boletos.Any(e => e.OrderId == id);
+            return _context.Boleto.Any(e => e.OrderId == id);
         }
     }
 }
