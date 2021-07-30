@@ -82,10 +82,10 @@
                     <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                 </label>
             </div>
+            
+            <a class="nav-link text-dark" asp-area="" asp-controller="Enderecos" asp-action="Edit" asp-route-id="@Model.Endereco.Id">Editar Endereço</a>
 
-            <h2>Endereço</h2>
-
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Endereco.Cep" class="control-label"></label>
                 <input asp-for="Endereco.Cep" class="form-control" />
                 <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
@@ -119,7 +119,7 @@
                 <label asp-for="Endereco.Uf" class="control-label"></label>
                 <input asp-for="Endereco.Uf" class="form-control" />
                 <span asp-validation-for="Endereco.Uf" class="text-danger"></span>
-            </div>
+            </div>*@
 
             <input type="hidden" asp-for="Id" />
             @*<input type="hidden" asp-for="Endereco.AlunoId" />

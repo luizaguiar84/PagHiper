@@ -77,10 +77,13 @@ namespace PagHiper.Web.Controllers
       if (id != aluno.Id)
         return NotFound();
 
-      if (ModelState.IsValid)
-      {
+      //if (ModelState.IsValid)
+     // {
         _alunoRepository.Update(aluno);
-      }
+     // }
+     // else
+     // {
+     // }
 
       return View(aluno);
     }

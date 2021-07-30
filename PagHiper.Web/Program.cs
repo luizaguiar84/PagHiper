@@ -13,6 +13,8 @@ namespace PagHiper.Web
 	{
 		public static void Main(string[] args)
 		{
+			Console.Title = "PagHiper";
+
 			CreateHostBuilder(args).Build().Run();
 		}
 

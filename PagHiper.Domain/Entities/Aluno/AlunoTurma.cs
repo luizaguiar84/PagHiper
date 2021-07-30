@@ -8,5 +8,7 @@ namespace PagHiper.Domain.Entities.Aluno
 		public Turma Turma { get; set; }
 		public bool Status { get; set; }
 		public Aluno Aluno { get; set; }
+		public Guid AlunoId { get; set; }
+
 	}
 }

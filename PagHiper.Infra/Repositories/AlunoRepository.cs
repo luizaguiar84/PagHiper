@@ -72,12 +72,13 @@ namespace PagHiper.Infra.Repositories
 			return listaAlunos;
 		}
 
-		public Aluno Update(Aluno aluno)
+		public void Update(Aluno aluno)
 		{
-			var ret = _context.Aluno.Update(aluno);
+			_context.Entry(aluno).State = EntityState.Modified;
+			//var ret = _context.Aluno.Update(aluno);
 			_context.SaveChanges();
 
-			return ret.Entity;
+			//return true;
 		}
 	}
 }

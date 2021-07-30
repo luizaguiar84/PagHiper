@@ -11,6 +11,6 @@ namespace PagHiper.Infra.Repositories.Interfaces
 		Aluno Add(Aluno aluno);
 		Aluno GetById(Guid alunoId);
 		List<Aluno> GetAll();
-		Aluno Update(Aluno aluno);
+		void Update(Aluno aluno);
 	}
 }
