@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using PagHiper.Application.Interfaces;
-using PagHiper.Application.Services;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using PagHiper.Infra.Repositories;
 using PagHiper.Infra.Repositories.Interfaces;
 
@@ -11,7 +10,6 @@ namespace PagHiper.Infra
 		public static IServiceCollection AddInfraDependency(this IServiceCollection services)
 		{
 			// Registro dos repositórios
-			services.AddTransient<IBoletoService, BoletoService>();
 			services.AddTransient<IAlunoRepository, AlunoRepository>();
 			services.AddTransient<IEnderecoRepository, EnderecoRepository>();
 			

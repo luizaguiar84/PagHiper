@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
@@ -12,6 +13,19 @@
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Domain\PagHiper.Domain.csproj" />
     <ProjectReference Include="..\PagHiper.Dto\PagHiper.Dto.csproj" />
+    <ProjectReference Include="..\PagHiper.Infra\PagHiper.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Extensions\**" />
   </ItemGroup>
 
 </Project>

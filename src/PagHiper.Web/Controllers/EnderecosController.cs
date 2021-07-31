@@ -1,42 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities.Common;
-using PagHiper.Infra;
-using PagHiper.Infra.MySql.Context;
-using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Web.Controllers
 {
     public class EnderecosController : Controller
     {
-        private readonly IEnderecoRepository _context;
+        private readonly IEnderecoService _enderecoService;
 
-        public EnderecosController(IEnderecoRepository context)
+        public EnderecosController(IEnderecoService enderecoService)
         {
-            _context = context;
+            _enderecoService = enderecoService;
         }
 
         // GET: Enderecos
         public async Task<IActionResult> Index()
         {
-            var enderecos = _context.GetAll();
+            var enderecos = _enderecoService.GetAll();
             return View(enderecos);
         }
 
         // GET: Enderecos/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var endereco = _context.GetById(id);
+            
+            var endereco = _enderecoService.GetById(id);
             //var endereco = await _context.AlunoEndereco
             //    .Include(e => e.Aluno)
             //    .FirstOrDefaultAsync(m => m.Id == id);
@@ -49,39 +40,33 @@ namespace PagHiper.Web.Controllers
         }
 
         // GET: Enderecos/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["AlunoId"] = new SelectList(_context.Aluno, "Id", "Id");
-        //    return View();
-        //}
+        public IActionResult Create()
+        {
+            //ViewData["AlunoId"] = new SelectList(_context.Aluno, "Id", "Id");
+            return View();
+        }
 
         // POST: Enderecos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("AlunoId,Cep,Rua,Numero,Complemento,Bairro,Cidade,Uf,Id")] Endereco endereco)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        endereco.Id = Guid.NewGuid();
-        //        _context.Add(endereco);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["AlunoId"] = new SelectList(_context.Aluno, "Id", "Id", endereco.AlunoId);
-        //    return View(endereco);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("AlunoId,Cep,Rua,Numero,Complemento,Bairro,Cidade,Uf,Id")] Endereco endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                endereco.Id = Guid.NewGuid();
+                _enderecoService.Add(endereco);
+                return RedirectToAction(nameof(Index));
+            }
+            //ViewData["AlunoId"] = new SelectList(_context.Aluno, "Id", "Id", endereco.AlunoId);
+            return View(endereco);
+        }
 
         // GET: Enderecos/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var endereco = _context.GetById(id);
+            var endereco = _enderecoService.GetById(id);
             if (endereco == null)
             {
                 return NotFound();
@@ -89,6 +74,14 @@ namespace PagHiper.Web.Controllers
             return View(endereco);
         }
 
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
+        {
+            _enderecoService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }   
+        
+        
         // POST: Enderecos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -105,7 +98,7 @@ namespace PagHiper.Web.Controllers
             {
                 try
                 {
-                    _context.Update(endereco);
+                    _enderecoService.Update(endereco);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,9 +108,5 @@ namespace PagHiper.Web.Controllers
             }
             return View(endereco);
         }
-
-       
-
-       
     }
 }
