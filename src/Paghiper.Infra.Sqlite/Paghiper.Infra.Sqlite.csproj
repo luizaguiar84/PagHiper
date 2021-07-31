@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
-    <ProjectReference Include="..\PagHiper.Infra\PagHiper.Infra.csproj" />
   </ItemGroup>
 
 </Project>

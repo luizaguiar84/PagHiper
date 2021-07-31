@@ -12,8 +12,6 @@ namespace Paghiper.Infra.Sqlite
 	{
 		public static IServiceCollection AddSqLiteDependency(this IServiceCollection services, DatabaseConfiguration configuration)
 		{
-			services.AddInfraDependency();
-
 			services.AddDbContext<CrudDbContext, SqliteCrudDbContext>(options =>
 			{
 				options.EnableSensitiveDataLogging();

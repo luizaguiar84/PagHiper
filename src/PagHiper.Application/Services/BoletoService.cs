@@ -51,5 +51,35 @@ namespace PagHiper.Application.Services
 			throw new NullReferenceException("Erro na geração do boleto!");
 
 		}
+
+		public Boleto GetAll()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Boleto GetById(Guid id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Add(Boleto boleto)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Update(Boleto boleto)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Remove(Boleto boleto)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool Exists(Guid id)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

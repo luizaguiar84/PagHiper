@@ -9,8 +9,6 @@ namespace PagHiper.Infra.MySql
 	{
 		public static IServiceCollection AddMySQLDependency(this IServiceCollection services, DatabaseConfiguration configuration)
 		{
-			services.AddInfraDependency();
-
 			services.AddDbContext<CrudDbContext, MySqlCrudDbContext>(options =>
 			{
 				options.EnableSensitiveDataLogging();

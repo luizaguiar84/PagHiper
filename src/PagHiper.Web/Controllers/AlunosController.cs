@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities.Aluno;
-using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Web.Controllers
 {
   public class AlunosController : Controller
   {
-    private readonly IAlunoRepository _alunoRepository;
+    private readonly IAlunoService _alunoService;
 
-    public AlunosController(IAlunoRepository alunoRepository)
+    public AlunosController(IAlunoService alunoService)
     {
-      _alunoRepository = alunoRepository;
+      _alunoService = alunoService;
     }
 
     // GET: Aluno
     public async Task<IActionResult> Index()
     {
-      var listaAlunos = _alunoRepository.GetAll();
+      var listaAlunos = _alunoService.GetAll();
       return View(listaAlunos);
     }
 
@@ -28,7 +28,7 @@ namespace PagHiper.Web.Controllers
       if (id == null)
         return NotFound();
 
-      var aluno = _alunoRepository.GetById(id);
+      var aluno = _alunoService.GetById(id);
 
       if (aluno == null)
         return NotFound();
@@ -51,7 +51,7 @@ namespace PagHiper.Web.Controllers
     {
       if (ModelState.IsValid)
       {
-        _alunoRepository.Add(aluno);
+        _alunoService.Add(aluno);
         return RedirectToAction(nameof(Index));
       }
       return View(aluno);
@@ -61,7 +61,7 @@ namespace PagHiper.Web.Controllers
     public async Task<IActionResult> Edit(Guid id)
     {
 
-      var aluno = _alunoRepository.GetById(id);
+      var aluno = _alunoService.GetById(id);
 
       if (aluno == null)
         return NotFound();
@@ -77,15 +77,9 @@ namespace PagHiper.Web.Controllers
       if (id != aluno.Id)
         return NotFound();
 
-      //if (ModelState.IsValid)
-     // {
-        _alunoRepository.Update(aluno);
-     // }
-     // else
-     // {
-     // }
+        _alunoService.Update(aluno);
 
-      return View(aluno);
+        return View(aluno);
     }
 
     // GET: Aluno/Delete/5
@@ -96,7 +90,7 @@ namespace PagHiper.Web.Controllers
         return NotFound();
       }
 
-      _alunoRepository.Delete(id);
+      _alunoService.Delete(id);
 
 
       return View();
