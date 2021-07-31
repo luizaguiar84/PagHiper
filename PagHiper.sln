@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paghiper.Infra.Sqlite", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Web", "src\PagHiper.Web\PagHiper.Web.csproj", "{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Helpers", "src\PagHiper.Helpers\PagHiper.Helpers.csproj", "{F8A06F0B-4E82-458D-B61B-86B40E211EE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A06F0B-4E82-458D-B61B-86B40E211EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A06F0B-4E82-458D-B61B-86B40E211EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A06F0B-4E82-458D-B61B-86B40E211EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A06F0B-4E82-458D-B61B-86B40E211EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
