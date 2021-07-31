@@ -18,27 +18,28 @@ namespace PagHiper.Application.Services
 
         public List<Aluno> GetAll()
         {
-            throw new NotImplementedException();
+	        var alunos = _alunoRepository.GetAll();
+	        return alunos;
         }
 
         public Aluno GetById(Guid id)
         {
-            throw new NotImplementedException();
+	        return _alunoRepository.GetById(id);
         }
 
         public void Add(Aluno aluno)
         {
-            throw new NotImplementedException();
+	        _alunoRepository.Add(aluno);
         }
 
         public void Update(Aluno aluno)
         {
-            throw new NotImplementedException();
+            _alunoRepository.Update(aluno);
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            _alunoRepository.Delete(id);
         }
     }
 }

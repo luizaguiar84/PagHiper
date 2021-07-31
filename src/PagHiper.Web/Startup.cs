@@ -28,8 +28,7 @@ namespace PagHiper.Web
 		{
 			services.AddControllersWithViews();
 
-			services.AddServiceCollection();
-			
+			services.AddServices();
 			services.AddInfraDependency();
 			
 			if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)

@@ -2,36 +2,43 @@ using System;
 using System.Collections.Generic;
 using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities.Common;
+using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Application.Services
 {
-    public class EnderecoService : IEnderecoService
-    {
-        public IEnumerable<Endereco> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+	public class EnderecoService : IEnderecoService
+	{
+		private readonly IEnderecoRepository _enderecoRepository;
 
-        public Endereco GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+		public EnderecoService(IEnderecoRepository enderecoRepository)
+		{
+			this._enderecoRepository = enderecoRepository;
+		}
+		public IEnumerable<Endereco> GetAll()
+		{
+			return _enderecoRepository.GetAll();
+		}
 
-        public void Update(Endereco endereco)
-        {
-            throw new NotImplementedException();
-        }
+		public Endereco GetById(Guid id)
+		{
+			return _enderecoRepository.GetById(id);
+		}
 
-        public void Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+		public void Update(Endereco endereco)
+		{
+			_enderecoRepository.Update(endereco);
+		}
 
-        public void Add(Endereco endereco)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public void Delete(Guid id)
+		{
+			_enderecoRepository.Delete(id);
+		}
 
-   
+		public void Add(Endereco endereco)
+		{
+			_enderecoRepository.Add(endereco);
+		}
+	}
+
+
 }

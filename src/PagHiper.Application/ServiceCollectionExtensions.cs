@@ -6,11 +6,12 @@ namespace PagHiper.Application
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddServiceCollection(this IServiceCollection services)
+        public static IServiceCollection AddServices(this IServiceCollection services)
         {
             
-            services.AddTransient<IBoletoService, BoletoService>();
+            //services.AddTransient<IBoletoService, BoletoService>();
             services.AddTransient<IAlunoService, AlunoService>();
+            services.AddTransient<IEnderecoService, EnderecoService>();
 			
             return services;
         }

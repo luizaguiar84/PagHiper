@@ -6,14 +6,14 @@ namespace PagHiper.Application.Interfaces
 {
     public interface IBoletoService
     {
-        string GetPdfBoleto(Boleto boleto);
-        string GetDigitableLineBoleto(Boleto boleto);
-        BoletoDto GetBoleto(Boleto boleto);
-        public Boleto GetAll();
+	    public string GetPdfBoleto(Boleto boleto);
+	    public string GetDigitableLineBoleto(Boleto boleto);
+	    public BoletoDto GetBoleto(Boleto boleto);
+	    public Boleto GetAll();
         public Boleto GetById(Guid id);
-        void Add(Boleto boleto);
-        void Update(Boleto boleto);
-        void Remove(Boleto boleto);
-        bool Exists(Guid id);
+        public void Add(Boleto boleto);
+        public void Update(Boleto boleto);
+        public void Remove(Boleto boleto);
+        public bool Exists(Guid id);
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
-using PagHiper.Domain.Entities.Aluno;
 using PagHiper.Domain.Entities.Common;
 using PagHiper.Infra.Repositories.Interfaces;
 
@@ -32,11 +30,11 @@ namespace PagHiper.Infra.Repositories
 			}
 		}
 
-		public Endereco Add(Endereco aluno)
+		public Endereco Add(Endereco endereco)
 		{
 			try
 			{
-				var ret = _context.Add(aluno);
+				var ret = _context.Add(endereco);
 				_context.SaveChanges();
 				return ret.Entity;
 			}

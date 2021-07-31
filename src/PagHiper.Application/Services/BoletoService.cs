@@ -4,11 +4,18 @@ using PagHiper.Application.Interfaces;
 using PagHiper.Application.Requests;
 using PagHiper.Domain.Entities;
 using PagHiper.Dto.Boleto;
+using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Application.Services
 {
 	public class BoletoService : IBoletoService
 	{
+		private readonly IBoletoRepository _boletoRepository;
+
+		public BoletoService(IBoletoRepository boletoRepository)
+		{
+			this._boletoRepository = boletoRepository;
+		}
 		public string GetPdfBoleto(Boleto boleto)
 		{
 			try

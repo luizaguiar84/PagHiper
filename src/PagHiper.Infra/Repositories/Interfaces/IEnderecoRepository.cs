@@ -7,7 +7,7 @@ namespace PagHiper.Infra.Repositories.Interfaces
 	public interface IEnderecoRepository
 	{
 		void Delete(Guid enderecoId);
-		Endereco Add(Endereco aluno);
+		Endereco Add(Endereco endereco);
 		Endereco GetById(Guid enderecoId);
 		List<Endereco> GetAll();
 		void Update(Endereco endereco);
