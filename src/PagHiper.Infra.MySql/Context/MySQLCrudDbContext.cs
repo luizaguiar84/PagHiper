@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PagHiper.Infra.Context;
 
 namespace PagHiper.Infra.MySql.Context
 {

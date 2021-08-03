@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PagHiper.Infra;
+using PagHiper.Infra.Context;
 using Paghiper.Infra.Sqlite.Context;
 
 namespace Paghiper.Infra.Sqlite

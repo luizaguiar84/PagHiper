@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities.Common;
+using PagHiper.Infra.Context;
 using PagHiper.Infra.Repositories.Interfaces;
 
-namespace PagHiper.Infra.Repositories
+namespace PagHiper.Infra
 {
 	public class EnderecoRepository : IEnderecoRepository
 	{
