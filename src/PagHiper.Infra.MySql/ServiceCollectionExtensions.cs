@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PagHiper.Infra.Context;
 using PagHiper.Infra.MySql.Context;
 
 namespace PagHiper.Infra.MySql

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Infra;
+using PagHiper.Infra.Context;
 
 namespace Paghiper.Infra.Sqlite.Context
 {

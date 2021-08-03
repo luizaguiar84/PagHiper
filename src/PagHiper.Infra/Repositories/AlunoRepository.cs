@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities.Aluno;
+using PagHiper.Infra.Context;
 using PagHiper.Infra.Repositories.Interfaces;
 
 namespace PagHiper.Infra.Repositories
@@ -50,6 +51,7 @@ namespace PagHiper.Infra.Repositories
 			{
 				var aluno = 
 					_context.Aluno
+						.AsNoTracking()
 						.Include(a => a.Endereco)
 						.Include(a => a.Contatos)
 						.Include(a => a.Parcelas)

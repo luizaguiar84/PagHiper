@@ -1,10 +1,10 @@
-﻿using System.Reflection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities;
 using PagHiper.Domain.Entities.Aluno;
 using PagHiper.Domain.Entities.Common;
+using PagHiper.Infra.Context.Builders;
 
-namespace PagHiper.Infra
+namespace PagHiper.Infra.Context
 {
 	public class CrudDbContext : DbContext
 	{
@@ -19,6 +19,10 @@ namespace PagHiper.Infra
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+
+			modelBuilder.ApplyConfiguration(new AlunoConfiguration());
+
+
 			modelBuilder.Entity<Boleto>(entity =>
 			{
 				entity.HasKey(b => b.OrderId);
