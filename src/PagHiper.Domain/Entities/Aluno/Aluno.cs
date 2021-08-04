@@ -14,7 +14,7 @@ namespace PagHiper.Domain.Entities.Aluno
 		public string Cpf { get; set; }
 		public string Rg { get; set; }
 		public string Nome { get; set; }
-		public Endereco Endereco { get; set; }
+		public Endereco Endereco { get; set; } = new Endereco();
 		
 		[DisplayName("Data de Nascimento")]
 		public DateTimeOffset? DataNascimento { get; set; }
@@ -33,9 +33,9 @@ namespace PagHiper.Domain.Entities.Aluno
 		public bool IsActive { get; set; }
 
 		public ICollection<AlunoContato> Contatos { get; set; }
-		public AlunoParcelas Parcelas { get; set; }
-		public AlunoMatricula Matricula { get; set; }
-		public ICollection<AlunoTurma> Turmas { get; set; }
-		
+		public AlunoParcelas Parcelas { get; set; } = new AlunoParcelas();
+		public AlunoMatricula Matricula { get; set; } = new AlunoMatricula();
+		public ICollection<AlunoTurma> Turmas { get; set; } = new List<AlunoTurma>();
+
 	}
 }

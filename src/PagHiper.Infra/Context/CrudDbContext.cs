@@ -10,7 +10,6 @@ namespace PagHiper.Infra.Context
 	{
 		public DbSet<Boleto> Boleto { get; set; }
 		public DbSet<Aluno> Aluno { get; set; }
-		public DbSet<Endereco> AlunoEndereco { get; set; }
 		public CrudDbContext()
 		{ }
 

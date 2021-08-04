@@ -33,6 +33,11 @@ namespace PagHiper.Infra.Context.Builders
 				.HasOne(a => a.Parcelas)
 				.WithOne(a => a.Aluno)
 				.HasForeignKey<AlunoParcelas>(a => a.AlunoId);
+
+			builder
+				.HasOne(a => a.Matricula)
+				.WithOne(a => a.Aluno)
+				.HasForeignKey<AlunoMatricula>(a => a.AlunoId);
 		}
 	}
 }
