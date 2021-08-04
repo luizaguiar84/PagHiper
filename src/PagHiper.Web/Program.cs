@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace PagHiper.Web
 {
@@ -16,6 +17,8 @@ namespace PagHiper.Web
 			Console.Title = "PagHiper";
 
 			CreateHostBuilder(args).Build().Run();
+
+			Log.CloseAndFlush();
 		}
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -26,6 +29,13 @@ namespace PagHiper.Web
 					.UseKestrel()
 					.UseIISIntegration()
 					.UseStartup<Startup>();
+				})
+				.UseSerilog()
+				.ConfigureLogging((hostingContext, logging) => {
+					Log.Logger = new LoggerConfiguration()
+						.ReadFrom.Configuration(hostingContext.Configuration)
+						.CreateLogger();
+
 				});
 	}
 }
