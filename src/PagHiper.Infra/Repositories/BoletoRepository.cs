@@ -16,11 +16,11 @@ namespace PagHiper.Infra.Repositories
 			this._context = context;
 		}
 
-		public void Delete(string orderId)
+		public void Delete(Guid id)
 		{
 			try
 			{
-				var boleto = GetById(orderId);
+				var boleto = GetById(id);
 				_context.Boleto.Remove(boleto);
 				_context.SaveChanges();
 			}
@@ -43,11 +43,11 @@ namespace PagHiper.Infra.Repositories
 			}
 		}
 
-		public Boleto GetById(string orderId)
+		public Boleto GetById(Guid Id)
 		{
 			try
 			{
-				return _context.Boleto.Single(b => b.OrderId == orderId);
+				return _context.Boleto.Single(b => b.Id == Id);
 			}
 
 			catch (Exception)
@@ -62,7 +62,7 @@ namespace PagHiper.Infra.Repositories
 			var listaBoletos = _context.Boleto.ToList();
 
 			return listaBoletos;
-			//var boleto = new Boleto
+			//var Boleto = new Boleto
 			//{
 			//	ApiKey = "ApiKeyTeste",
 			//	DaysDueDate = "10",

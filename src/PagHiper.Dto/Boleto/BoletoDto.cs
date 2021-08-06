@@ -1,31 +1,48 @@
-﻿namespace PagHiper.Dto.Boleto
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PagHiper.Dto.Boleto
 {
+
 	public class BoletoDto
 	{
-		public Create_Request create_request { get; set; }
-	}
-
-	public class Create_Request
-	{
-		public string result { get; set; }
-		public string response_message { get; set; }
-		public string transaction_id { get; set; }
-		public string created_date { get; set; }
-		public string value_cents { get; set; }
-		public string status { get; set; }
+		public string apiKey { get; set; }
 		public string order_id { get; set; }
-		public string due_date { get; set; }
-		public Bank_Slip bank_slip { get; set; }
-		public string http_code { get; set; }
+		public string payer_email { get; set; }
+		public string payer_name { get; set; }
+		public string payer_cpf_cnpj { get; set; }
+		public string payer_phone { get; set; }
+		public string payer_street { get; set; }
+		public string payer_number { get; set; }
+		public string payer_complement { get; set; }
+		public string payer_district { get; set; }
+		public string payer_city { get; set; }
+		public string payer_state { get; set; }
+		public string payer_zip_code { get; set; }
+		public string notification_url { get; set; }
+		public string discount_cents { get; set; }
+		public string shipping_price_cents { get; set; }
+		public string shipping_methods { get; set; }
+		public string partners_id { get; set; }
+		public string seller_description { get; set; }
+		public string late_payment_fine { get; set; }
+		public string per_day_interest { get; set; }
+		public string early_payment_discounts_days { get; set; }
+		public string early_payment_discounts_cents { get; set; }
+		public string open_after_day_due { get; set; }
+		public bool fixed_description { get; set; }
+		public string days_due_date { get; set; }
+		public string type_bank_slip { get; set; }
+		public IEnumerable<Item> items { get; set; }
 	}
 
-	public class Bank_Slip
+	public class Item
 	{
-		public string digitable_line { get; set; }
-		public string url_slip { get; set; }
-		public string url_slip_pdf { get; set; }
-		public string bar_code_number_to_image { get; set; }
+		public string description { get; set; }
+		public string quantity { get; set; }
+		public string item_id { get; set; }
+		public string price_cents { get; set; }
 	}
 
 }
-

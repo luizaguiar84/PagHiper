@@ -42,20 +42,20 @@ namespace PagHiper.Application.Services
 			}
 		}
 
-		public BoletoDto GetBoleto(Boleto boleto)
+		public BoletoResponseDto GetBoleto(Boleto boleto)
 		{
 			var response = DoRequest.Post("/transaction/create/", boleto);
 			if (!response.IsSuccessful)
 				throw new Exception("Erro na requisição!");
 
-			var returnTicket = JsonConvert.DeserializeObject<BoletoDto>(response.Content);
+			var returnTicket = JsonConvert.DeserializeObject<BoletoResponseDto>(response.Content);
 
 			if (returnTicket != null && returnTicket.create_request.result == "reject")
 			{
 				throw new Exception($"Erro na requisição! - erro: {returnTicket.create_request.response_message}");
 			}
 
-			throw new NullReferenceException("Erro na geração do boleto!");
+			throw new NullReferenceException("Erro na geração do Boleto!");
 
 		}
 

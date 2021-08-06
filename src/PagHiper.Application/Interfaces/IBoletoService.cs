@@ -8,7 +8,7 @@ namespace PagHiper.Application.Interfaces
     {
 	    public string GetPdfBoleto(Boleto boleto);
 	    public string GetDigitableLineBoleto(Boleto boleto);
-	    public BoletoDto GetBoleto(Boleto boleto);
+	    public BoletoResponseDto GetBoleto(Boleto boleto);
 	    public Boleto GetAll();
         public Boleto GetById(Guid id);
         public void Add(Boleto boleto);

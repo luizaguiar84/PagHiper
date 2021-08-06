@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PagHiper.Infra.MySql.Migrations
 {
-    public partial class teste : Migration
+    public partial class creation_Boleto_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace PagHiper.Infra.MySql.Migrations
                     Rg = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
                     DataNascimento = table.Column<DateTimeOffset>(nullable: true),
-                    DataCadastro = table.Column<DateTimeOffset>(nullable: true),
+                    DataCadastro = table.Column<DateTimeOffset>(nullable: false),
                     DataAtualizacao = table.Column<DateTimeOffset>(nullable: true),
                     ResponsavelNome = table.Column<string>(nullable: true),
                     ResponsavelCpf = table.Column<string>(nullable: true),
@@ -36,31 +36,38 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Boleto",
                 columns: table => new
                 {
-                    OrderId = table.Column<string>(nullable: false),
                     Id = table.Column<byte[]>(nullable: false),
-                    ApiKey = table.Column<string>(nullable: true),
-                    PayerEmail = table.Column<string>(nullable: true),
-                    PayerName = table.Column<string>(nullable: true),
-                    PayerCpfCnpj = table.Column<string>(nullable: true),
-                    PayerPhone = table.Column<string>(nullable: true),
-                    PayerStreet = table.Column<string>(nullable: true),
-                    PayerNumber = table.Column<string>(nullable: true),
-                    PayerComplement = table.Column<string>(nullable: true),
-                    PayerDistrict = table.Column<string>(nullable: true),
-                    PayerCity = table.Column<string>(nullable: true),
-                    PayerState = table.Column<string>(nullable: true),
-                    PayerZipCode = table.Column<string>(nullable: true),
-                    NotificationUrl = table.Column<string>(nullable: true),
-                    DiscountCents = table.Column<string>(nullable: true),
-                    ShippingPriceCents = table.Column<string>(nullable: true),
-                    ShippingMethods = table.Column<string>(nullable: true),
-                    FixedDescription = table.Column<bool>(nullable: false),
-                    DaysDueDate = table.Column<string>(nullable: true),
-                    TypeBankSlip = table.Column<string>(nullable: true)
+                    apiKey = table.Column<string>(nullable: true),
+                    order_id = table.Column<string>(nullable: true),
+                    payer_email = table.Column<string>(nullable: true),
+                    payer_name = table.Column<string>(nullable: true),
+                    payer_cpf_cnpj = table.Column<string>(nullable: true),
+                    payer_phone = table.Column<string>(nullable: true),
+                    payer_street = table.Column<string>(nullable: true),
+                    payer_number = table.Column<string>(nullable: true),
+                    payer_complement = table.Column<string>(nullable: true),
+                    payer_district = table.Column<string>(nullable: true),
+                    payer_city = table.Column<string>(nullable: true),
+                    payer_state = table.Column<string>(nullable: true),
+                    payer_zip_code = table.Column<string>(nullable: true),
+                    notification_url = table.Column<string>(nullable: true),
+                    discount_cents = table.Column<string>(nullable: true),
+                    shipping_price_cents = table.Column<string>(nullable: true),
+                    shipping_methods = table.Column<string>(nullable: true),
+                    partners_id = table.Column<string>(nullable: true),
+                    seller_description = table.Column<string>(nullable: true),
+                    late_payment_fine = table.Column<string>(nullable: true),
+                    per_day_interest = table.Column<string>(nullable: true),
+                    early_payment_discounts_days = table.Column<string>(nullable: true),
+                    early_payment_discounts_cents = table.Column<string>(nullable: true),
+                    open_after_day_due = table.Column<string>(nullable: true),
+                    fixed_description = table.Column<bool>(nullable: false),
+                    days_due_date = table.Column<string>(nullable: true),
+                    type_bank_slip = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Boleto", x => x.OrderId);
+                    table.PrimaryKey("PK_Boleto", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,20 +185,21 @@ namespace PagHiper.Infra.MySql.Migrations
                 columns: table => new
                 {
                     Id = table.Column<byte[]>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Quantity = table.Column<string>(nullable: true),
-                    PriceCents = table.Column<string>(nullable: true),
-                    BoletoOrderId = table.Column<string>(nullable: true)
+                    BoletoId = table.Column<byte[]>(nullable: false),
+                    description = table.Column<string>(nullable: true),
+                    quantity = table.Column<string>(nullable: true),
+                    item_id = table.Column<string>(nullable: true),
+                    price_cents = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Item", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Item_Boleto_BoletoOrderId",
-                        column: x => x.BoletoOrderId,
+                        name: "FK_Item_Boleto_BoletoId",
+                        column: x => x.BoletoId,
                         principalTable: "Boleto",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -255,9 +263,9 @@ namespace PagHiper.Infra.MySql.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Item_BoletoOrderId",
+                name: "IX_Item_BoletoId",
                 table: "Item",
-                column: "BoletoOrderId");
+                column: "BoletoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

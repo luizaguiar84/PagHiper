@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PagHiper.Domain.Entities;
 
 namespace PagHiper.Infra.Repositories.Interfaces
 {
 	public interface IBoletoRepository
 	{
-		void Delete(string orderId);
+		void Delete(Guid id);
 		void Add(Boleto boleto);
-		Boleto GetById(string orderId);
+		Boleto GetById(Guid id);
 		List<Boleto> GetAll();
 	}
 }
