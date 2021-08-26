@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Infra", "src\PagHi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Infra.MySql", "src\PagHiper.Infra.MySql\PagHiper.Infra.MySql.csproj", "{74FE9D10-4ABD-4DF0-A5F4-9EB97AF79EC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paghiper.Infra.Sqlite", "src\Paghiper.Infra.Sqlite\Paghiper.Infra.Sqlite.csproj", "{63CBE9C5-99AA-423A-9B0E-4FBC19F48BFC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Web", "src\PagHiper.Web\PagHiper.Web.csproj", "{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagHiper.Helpers", "src\PagHiper.Helpers\PagHiper.Helpers.csproj", "{F8A06F0B-4E82-458D-B61B-86B40E211EE9}"
@@ -45,10 +43,6 @@ Global
 		{74FE9D10-4ABD-4DF0-A5F4-9EB97AF79EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74FE9D10-4ABD-4DF0-A5F4-9EB97AF79EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74FE9D10-4ABD-4DF0-A5F4-9EB97AF79EC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63CBE9C5-99AA-423A-9B0E-4FBC19F48BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63CBE9C5-99AA-423A-9B0E-4FBC19F48BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63CBE9C5-99AA-423A-9B0E-4FBC19F48BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63CBE9C5-99AA-423A-9B0E-4FBC19F48BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A615064D-AE0A-4AFA-B289-7A5E9D7A1687}.Release|Any CPU.ActiveCfg = Release|Any CPU

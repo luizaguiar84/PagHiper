@@ -12,6 +12,7 @@ namespace PagHiper.Infra
 			// Registro dos repositórios
 			services.AddTransient<IAlunoRepository, AlunoRepository>();
 			services.AddTransient<IBoletoRepository, BoletoRepository>();
+			services.AddTransient<ILeadRepository, LeadRepository>();
 			
 			return services;
 		}

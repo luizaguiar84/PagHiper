@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PagHiper.Domain.Entities;
 
 namespace PagHiper.Infra.Context.Builders
@@ -11,6 +12,10 @@ namespace PagHiper.Infra.Context.Builders
         {
             builder.ToTable("Lead");
             builder.HasKey(l => l.Id);
+            //builder.Property(x => x.Id)
+	           // .HasColumnType("varchar")
+	           // .HasMaxLength(36);
+
         }
     }
 }

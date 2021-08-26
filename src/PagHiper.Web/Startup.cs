@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using PagHiper.Application;
 using PagHiper.Infra;
 using PagHiper.Infra.MySql;
-using Paghiper.Infra.Sqlite;
 
 namespace PagHiper.Web
 {
@@ -31,9 +30,9 @@ namespace PagHiper.Web
 			services.AddServices();
 			services.AddInfraDependency();
 			
-			if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)
-				services.AddSqLiteDependency(DatabaseConfiguration);
-			else if (DatabaseConfiguration.DatabaseType == DatabaseType.MySQL)
+			//if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)
+			//	services.AddSqLiteDependency(DatabaseConfiguration);
+			if (DatabaseConfiguration.DatabaseType == DatabaseType.MySQL)
 				services.AddMySQLDependency(DatabaseConfiguration);
 
 			else

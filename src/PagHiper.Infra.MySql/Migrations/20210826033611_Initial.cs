@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PagHiper.Infra.MySql.Migrations
 {
-    public partial class creation_Boleto_table : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,6 +68,22 @@ namespace PagHiper.Infra.MySql.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Boleto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lead",
+                columns: table => new
+                {
+                    Id = table.Column<byte[]>(nullable: false),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Telefone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lead", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -287,6 +303,9 @@ namespace PagHiper.Infra.MySql.Migrations
 
             migrationBuilder.DropTable(
                 name: "Item");
+
+            migrationBuilder.DropTable(
+                name: "Lead");
 
             migrationBuilder.DropTable(
                 name: "Turma");

@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
     <ProjectReference Include="..\PagHiper.Infra.MySql\PagHiper.Infra.MySql.csproj" />
-    <ProjectReference Include="..\Paghiper.Infra.Sqlite\Paghiper.Infra.Sqlite.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +28,6 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\BoletoController.cs" />
-    <Compile Remove="Controllers\LeadsController.cs" />
   </ItemGroup>
 
 </Project>
