@@ -27,4 +27,9 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\BoletoController.cs" />
+    <Compile Remove="Controllers\LeadsController.cs" />
+  </ItemGroup>
+
 </Project>
