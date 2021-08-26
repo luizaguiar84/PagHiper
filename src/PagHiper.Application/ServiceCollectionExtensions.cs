@@ -11,7 +11,7 @@ namespace PagHiper.Application
             
             //services.AddTransient<IBoletoService, BoletoService>();
             services.AddTransient<IAlunoService, AlunoService>();
-            //services.AddTransient<IEnderecoService, EnderecoService>();
+            services.AddTransient<ILeadService, LeadService>();
 			
             return services;
         }

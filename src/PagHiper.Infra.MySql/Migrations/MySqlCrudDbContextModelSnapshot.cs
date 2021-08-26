@@ -369,6 +369,32 @@ namespace PagHiper.Infra.MySql.Migrations
                     b.ToTable("Endereco");
                 });
 
+            modelBuilder.Entity("PagHiper.Domain.Entities.Lead", b =>
+                {
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lead");
+                });
+
             modelBuilder.Entity("PagHiper.Domain.Entities.Turma", b =>
                 {
                     b.Property<byte[]>("Id")

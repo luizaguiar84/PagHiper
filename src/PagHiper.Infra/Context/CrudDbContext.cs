@@ -10,6 +10,8 @@ namespace PagHiper.Infra.Context
 	{
 		public DbSet<Boleto> Boleto { get; set; }
 		public DbSet<Aluno> Aluno { get; set; }
+		
+		public DbSet<Lead> Leads { get; set; }
 		public CrudDbContext()
 		{ }
 
@@ -21,6 +23,7 @@ namespace PagHiper.Infra.Context
 
 			modelBuilder.ApplyConfiguration(new AlunoConfiguration());
 			modelBuilder.ApplyConfiguration(new BoletoConfiguration());
+			modelBuilder.ApplyConfiguration(new LeadConfiguration());
 
 			base.OnModelCreating(modelBuilder);
 		}

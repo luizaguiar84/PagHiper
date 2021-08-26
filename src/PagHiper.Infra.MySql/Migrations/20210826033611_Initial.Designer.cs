@@ -9,8 +9,8 @@ using PagHiper.Infra.MySql.Context;
 namespace PagHiper.Infra.MySql.Migrations
 {
     [DbContext(typeof(MySqlCrudDbContext))]
-    [Migration("20210806233034_creation_Boleto_table")]
-    partial class creation_Boleto_table
+    [Migration("20210826033611_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -369,6 +369,32 @@ namespace PagHiper.Infra.MySql.Migrations
                         .IsUnique();
 
                     b.ToTable("Endereco");
+                });
+
+            modelBuilder.Entity("PagHiper.Domain.Entities.Lead", b =>
+                {
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lead");
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Turma", b =>

@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\PagHiper.Application\PagHiper.Application.csproj" />
     <ProjectReference Include="..\PagHiper.Infra.MySql\PagHiper.Infra.MySql.csproj" />
-    <ProjectReference Include="..\Paghiper.Infra.Sqlite\Paghiper.Infra.Sqlite.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +24,10 @@
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\BoletoController.cs" />
   </ItemGroup>
 
 </Project>
