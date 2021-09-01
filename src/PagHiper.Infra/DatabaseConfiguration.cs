@@ -11,17 +11,26 @@ namespace PagHiper.Infra
 		public string ConnectionString { get; }
 		public DatabaseType DatabaseType { get; }
 
-		public DatabaseConfiguration(IConfiguration configuration)
+		public DatabaseConfiguration(IConfiguration configuration, bool isProducao)
 		{
 			ConnectionStringName = configuration["DefaultConnectionString"];
-
-			if (DatabaseType.Sqlite.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
+			
+			if (isProducao)
+			{
+				DatabaseType = DatabaseType.MySQLProd;
+				ConnectionStringName = DatabaseType.MySQLProd.ToString();
+			}
+			else if (DatabaseType.Sqlite.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
 			{
 				DatabaseType = DatabaseType.Sqlite;
 			}
 			else if (DatabaseType.MySQL.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
 			{
 				DatabaseType = DatabaseType.MySQL;
+			}
+			else if (DatabaseType.MySQLProd.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
+			{
+				DatabaseType = DatabaseType.MySQLProd;
 			}
 			else
 			{
@@ -35,6 +44,7 @@ namespace PagHiper.Infra
 	public enum DatabaseType
 	{
 		Sqlite,
-		MySQL
+		MySQL,
+		MySQLProd
 	}
 }
