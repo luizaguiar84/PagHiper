@@ -15,27 +15,19 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PagHiper.Web": {
+    "Kestrel Development": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     },
-    "WSL 2": {
-      "commandName": "WSL2",
-      "launchUrl": "https://localhost:5001",
+    "Kestrel Production": {
+      "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
-      "distributionName": ""
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "publishAllPorts": true,
-      "useSSL": true
+      "applicationUrl": "http://localhost:8080/"
     }
   }
 }
