@@ -39,41 +39,41 @@ namespace PagHiper.Web
 			else
 				throw new NotSupportedException("No database configuration found");
 		}
-	}
 
-	// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-	public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-	{
-		if (env.IsDevelopment())
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			app.UseDeveloperExceptionPage();
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
+			{
+				app.UseExceptionHandler("/Home/Error");
+				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+				app.UseHsts();
+			}
+			//using var dbContext = new SqliteCrudDbContext();
+			////cria o banco
+			//dbContext.Database.EnsureCreated();
+
+
+			app.UseHttpsRedirection();
+			app.UseStaticFiles();
+
+			app.UseRouting();
+
+			app.UseAuthorization();
+
+			app.ApplicationServices.MigrateDatabase();
+
+			app.UseEndpoints(endpoints =>
+			{
+				endpoints.MapControllerRoute(
+					name: "default",
+					pattern: "{controller=Home}/{action=Index}/{id?}");
+			});
 		}
-		else
-		{
-			app.UseExceptionHandler("/Home/Error");
-			// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-			app.UseHsts();
-		}
-		//using var dbContext = new SqliteCrudDbContext();
-		////cria o banco
-		//dbContext.Database.EnsureCreated();
-
-
-		app.UseHttpsRedirection();
-		app.UseStaticFiles();
-
-		app.UseRouting();
-
-		app.UseAuthorization();
-
-		app.ApplicationServices.MigrateDatabase();
-
-		app.UseEndpoints(endpoints =>
-		{
-			endpoints.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
-		});
 	}
-}
 }
