@@ -31,4 +31,12 @@
     <Compile Remove="Controllers\BoletoController.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Shared\Final.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\Final.cshtml" />
+  </ItemGroup>
+
 </Project>
