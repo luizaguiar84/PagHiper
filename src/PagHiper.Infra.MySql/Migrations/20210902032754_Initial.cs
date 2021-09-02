@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using MySql.EntityFrameworkCore.Metadata;
 
 namespace PagHiper.Infra.MySql.Migrations
 {
@@ -11,7 +12,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Aluno",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Cpf = table.Column<string>(nullable: true),
                     Rg = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
@@ -36,7 +38,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Boleto",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     apiKey = table.Column<string>(nullable: true),
                     order_id = table.Column<string>(nullable: true),
                     payer_email = table.Column<string>(nullable: true),
@@ -74,12 +77,15 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Lead",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    AceitaPropaganda = table.Column<bool>(nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: true),
+                    Telefone = table.Column<string>(maxLength: 14, nullable: false),
+                    Cupom = table.Column<string>(maxLength: 7, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,7 +96,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Turma",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -102,11 +109,12 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "AlunoContato",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Tipo = table.Column<string>(nullable: true),
                     Contato = table.Column<string>(nullable: true),
                     Observacao = table.Column<string>(nullable: true),
-                    AlunoId = table.Column<byte[]>(nullable: false)
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -123,7 +131,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "AlunoMatricula",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     NumeroRegistro = table.Column<string>(nullable: true),
                     Valor = table.Column<decimal>(nullable: false),
                     PagamentoTipoId = table.Column<string>(nullable: true),
@@ -131,7 +140,7 @@ namespace PagHiper.Infra.MySql.Migrations
                     CursoId = table.Column<string>(nullable: true),
                     DataMatricula = table.Column<DateTimeOffset>(nullable: true),
                     CampanhaId = table.Column<string>(nullable: true),
-                    AlunoId = table.Column<byte[]>(nullable: false)
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,8 +157,9 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "AlunoParcelas",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
-                    AlunoId = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    AlunoId = table.Column<int>(nullable: false),
                     TipoPagamentoId = table.Column<string>(nullable: true),
                     DataVencimento = table.Column<DateTime>(nullable: false),
                     Valor = table.Column<decimal>(nullable: false),
@@ -175,8 +185,9 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Endereco",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
-                    AlunoId = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    AlunoId = table.Column<int>(nullable: false),
                     Cep = table.Column<string>(nullable: true),
                     Rua = table.Column<string>(nullable: true),
                     Numero = table.Column<string>(nullable: true),
@@ -200,8 +211,9 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "Item",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
-                    BoletoId = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    BoletoId = table.Column<int>(nullable: false),
                     description = table.Column<string>(nullable: true),
                     quantity = table.Column<string>(nullable: true),
                     item_id = table.Column<string>(nullable: true),
@@ -222,11 +234,12 @@ namespace PagHiper.Infra.MySql.Migrations
                 name: "AlunoTurma",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     DataIngresso = table.Column<DateTimeOffset>(nullable: false),
-                    TurmaId = table.Column<byte[]>(nullable: true),
+                    TurmaId = table.Column<int>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
-                    AlunoId = table.Column<byte[]>(nullable: false)
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

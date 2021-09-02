@@ -9,7 +9,7 @@ using PagHiper.Infra.MySql.Context;
 namespace PagHiper.Infra.MySql.Migrations
 {
     [DbContext(typeof(MySqlCrudDbContext))]
-    [Migration("20210826033611_Initial")]
+    [Migration("20210902032754_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +21,9 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("Boleto", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
                     b.Property<string>("apiKey")
                         .HasColumnType("text");
@@ -113,13 +113,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("Item", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("BoletoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("BoletoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("description")
                         .HasColumnType("text");
@@ -142,9 +141,9 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.Aluno", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Cpf")
                         .HasColumnType("text");
@@ -196,13 +195,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoContato", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Contato")
                         .HasColumnType("text");
@@ -222,13 +220,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoMatricula", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CampanhaId")
                         .HasColumnType("text");
@@ -261,13 +258,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoParcelas", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataPagamentoEfetuado")
                         .HasColumnType("datetime");
@@ -306,13 +302,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoTurma", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
 
                     b.Property<DateTimeOffset>("DataIngresso")
                         .HasColumnType("timestamp");
@@ -320,8 +315,8 @@ namespace PagHiper.Infra.MySql.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<byte[]>("TurmaId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int?>("TurmaId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -334,13 +329,12 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Common.Endereco", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Bairro")
                         .HasColumnType("text");
@@ -373,24 +367,36 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Lead", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
+
+                    b.Property<bool>("AceitaPropaganda")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Cupom")
+                        .HasColumnType("varchar(7)")
+                        .HasMaxLength(7);
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Email")
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("varchar(14)")
+                        .HasMaxLength(14);
 
                     b.HasKey("Id");
 
@@ -399,9 +405,9 @@ namespace PagHiper.Infra.MySql.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Turma", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .HasColumnType("text");
