@@ -7,9 +7,9 @@ namespace PagHiper.Infra.Repositories.Interfaces
 {
 	public interface IAlunoRepository
 	{
-		void Delete(Guid alunoId);
+		void Delete(int alunoId);
 		Aluno Add(Aluno aluno);
-		Aluno GetById(Guid alunoId);
+		Aluno GetById(int alunoId);
 		List<Aluno> GetAll();
 		void Update(Aluno aluno);
 	}

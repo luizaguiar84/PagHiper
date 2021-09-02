@@ -64,7 +64,7 @@ namespace PagHiper.Application.Services
 			throw new NotImplementedException();
 		}
 
-		public Boleto GetById(Guid id)
+		public Boleto GetById(int id)
 		{
 			throw new NotImplementedException();
 		}
@@ -84,7 +84,7 @@ namespace PagHiper.Application.Services
 			throw new NotImplementedException();
 		}
 
-		public bool Exists(Guid id)
+		public bool Exists(int id)
 		{
 			throw new NotImplementedException();
 		}

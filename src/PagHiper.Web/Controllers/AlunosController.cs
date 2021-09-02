@@ -29,7 +29,7 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// GET: Aluno/Details/5
-		public async Task<IActionResult> Details(Guid id)
+		public async Task<IActionResult> Details(int id)
 		{
 			if (id == null)
 				return NotFound();
@@ -64,7 +64,7 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// GET: Aluno/Edit/5
-		public async Task<IActionResult> Edit(Guid id)
+		public async Task<IActionResult> Edit(int id)
 		{
 
 			var aluno = _alunoService.GetById(id);
@@ -78,7 +78,7 @@ namespace PagHiper.Web.Controllers
 		// POST: Aluno/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(Guid id, Aluno aluno)
+		public async Task<IActionResult> Edit(int id, Aluno aluno)
 		{
 			if (id != aluno.Id)
 				return NotFound();
@@ -89,7 +89,7 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// GET: Aluno/Delete/5
-		public async Task<IActionResult> Delete(Guid id)
+		public async Task<IActionResult> Delete(int id)
 		{
 			if (id == null)
 			{

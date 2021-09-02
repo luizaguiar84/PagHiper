@@ -7,10 +7,10 @@ namespace PagHiper.Application.Interfaces
     public interface IAlunoService
     {
         public List<Aluno> GetAll();
-        Aluno GetById(Guid id);
+        Aluno GetById(int id);
         void Add(Aluno aluno);
         void Update(Aluno aluno);
-        void Delete(Guid id);
+        void Delete(int id);
     }
     
     

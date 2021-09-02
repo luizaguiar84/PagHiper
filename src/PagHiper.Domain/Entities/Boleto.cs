@@ -36,7 +36,7 @@ public class Boleto : BaseEntity
 
 public class Item : BaseEntity
 {
-	public Guid BoletoId { get; set; }
+	public int BoletoId { get; set; }
 	public Boleto Boleto { get; set; }
 	public string description { get; set; }
 	public string quantity { get; set; }

@@ -19,7 +19,7 @@ namespace PagHiper.Application.Services
 			return _enderecoRepository.GetAll();
 		}
 
-		public Endereco GetById(Guid id)
+		public Endereco GetById(int id)
 		{
 			return _enderecoRepository.GetById(id);
 		}
@@ -29,7 +29,7 @@ namespace PagHiper.Application.Services
 			_enderecoRepository.Update(endereco);
 		}
 
-		public void Delete(Guid id)
+		public void Delete(int id)
 		{
 			_enderecoRepository.Delete(id);
 		}
