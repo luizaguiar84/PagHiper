@@ -1,5 +1,3 @@
-using System;
-
 namespace PagHiper.Web.Models
 {
 	public class ErrorViewModel

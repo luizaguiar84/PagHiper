@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities.Common;
@@ -17,14 +15,14 @@ namespace PagHiper.Web.Controllers
         }
 
         // GET: Enderecos
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var enderecos = _enderecoService.GetAll();
             return View(enderecos);
         }
 
         // GET: Enderecos/Details/5
-        public async Task<IActionResult> Details(int id)
+        public ActionResult Details(int id)
         {
             
             var endereco = _enderecoService.GetById(id);
@@ -51,7 +49,7 @@ namespace PagHiper.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlunoId,Cep,Rua,Numero,Complemento,Bairro,Cidade,Uf,Id")] Endereco endereco)
+        public IActionResult Create([Bind("AlunoId,Cep,Rua,Numero,Complemento,Bairro,Cidade,Uf,Id")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +62,7 @@ namespace PagHiper.Web.Controllers
         }
 
         // GET: Enderecos/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
             var endereco = _enderecoService.GetById(id);
             if (endereco == null)
@@ -87,7 +85,7 @@ namespace PagHiper.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Endereco endereco)
+        public IActionResult Edit(int id, Endereco endereco)
         {
             if (id != endereco.Id)
             {

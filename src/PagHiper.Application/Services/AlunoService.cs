@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using PagHiper.Application.Interfaces;
 using PagHiper.Domain.Entities.Aluno;

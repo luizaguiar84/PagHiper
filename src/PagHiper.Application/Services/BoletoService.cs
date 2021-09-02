@@ -18,28 +18,14 @@ namespace PagHiper.Application.Services
 		}
 		public string GetPdfBoleto(Boleto boleto)
 		{
-			try
-			{
-				var returnTicket = GetBoleto(boleto);
-				return returnTicket.create_request.bank_slip.url_slip_pdf;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var returnTicket = GetBoleto(boleto);
+			return returnTicket.create_request.bank_slip.url_slip_pdf;
 		}
 
 		public string GetDigitableLineBoleto(Boleto boleto)
 		{
-			try
-			{
-				var response = GetBoleto(boleto);
-				return response.create_request.bank_slip.digitable_line;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var response = GetBoleto(boleto);
+			return response.create_request.bank_slip.digitable_line;
 		}
 
 		public BoletoResponseDto GetBoleto(Boleto boleto)

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PagHiper.Infra.Context;
@@ -9,7 +8,7 @@ namespace PagHiper.Infra.MySql
 {
 	public static class ServiceCollectionExtensions
 	{
-		public static IServiceCollection AddMySQLDependency(this IServiceCollection services, DatabaseConfiguration configuration)
+		public static IServiceCollection AddMySqlDependency(this IServiceCollection services, DatabaseConfiguration configuration)
 		{
 			services.AddDbContext<CrudDbContext, MySqlCrudDbContext>(options =>
 			{

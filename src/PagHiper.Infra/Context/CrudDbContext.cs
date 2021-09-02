@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities;
 using PagHiper.Domain.Entities.Aluno;
-using PagHiper.Domain.Entities.Common;
 using PagHiper.Infra.Context.Builders;
 
 namespace PagHiper.Infra.Context

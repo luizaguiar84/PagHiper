@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PagHiper.Domain.Entities;
 
 namespace PagHiper.Infra.Context.Builders
 {
@@ -12,7 +13,7 @@ namespace PagHiper.Infra.Context.Builders
 			builder.HasKey(a => a.Id);
 
 			builder
-				.HasMany(a => a.items)
+				.HasMany(a => a.Items)
 				.WithOne(a => a.Boleto)
 				.HasForeignKey(a => a.BoletoId);
 		}
