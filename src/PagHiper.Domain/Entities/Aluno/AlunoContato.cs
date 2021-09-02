@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PagHiper.Domain.Entities.Aluno
+﻿namespace PagHiper.Domain.Entities.Aluno
 {
 	public class AlunoContato : BaseEntity
 	{

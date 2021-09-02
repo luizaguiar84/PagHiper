@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PagHiper.Domain.Entities;
 using PagHiper.Infra.Context;
@@ -18,42 +17,20 @@ namespace PagHiper.Infra.Repositories
 
 		public void Delete(int id)
 		{
-			try
-			{
-				var boleto = GetById(id);
-				_context.Boleto.Remove(boleto);
-				_context.SaveChanges();
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var boleto = GetById(id);
+			_context.Boleto.Remove(boleto);
+			_context.SaveChanges();
 		}
 
 		public void Add(Boleto boleto)
 		{
-			try
-			{
-				_context.Add(boleto);
-				_context.SaveChanges();
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			_context.Add(boleto);
+			_context.SaveChanges();
 		}
 
-		public Boleto GetById(int Id)
+		public Boleto GetById(int id)
 		{
-			try
-			{
-				return _context.Boleto.Single(b => b.Id == Id);
-			}
-
-			catch (Exception)
-			{
-				throw;
-			}
+			return _context.Boleto.Single(b => b.Id == id);
 		}
 
 		public List<Boleto> GetAll()

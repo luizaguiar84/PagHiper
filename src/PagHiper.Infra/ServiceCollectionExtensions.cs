@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PagHiper.Infra.Repositories;
 using PagHiper.Infra.Repositories.Interfaces;
 

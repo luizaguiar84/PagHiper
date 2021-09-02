@@ -7,10 +7,6 @@ namespace PagHiper.Domain.Entities.Aluno
 {
 	public class Aluno : BaseEntity
 	{
-		public Aluno()
-		{
-			
-		}
 		public string Cpf { get; set; }
 		public string Rg { get; set; }
 		public string Nome { get; set; }

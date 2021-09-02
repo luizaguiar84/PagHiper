@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using System.Collections.Generic;
 using PagHiper.Domain.Entities.Aluno;
 
 namespace PagHiper.Infra.Repositories.Interfaces

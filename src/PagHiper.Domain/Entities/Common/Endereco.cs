@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PagHiper.Domain.Entities.Common
+﻿namespace PagHiper.Domain.Entities.Common
 {
 	public class Endereco : BaseEntity
 	{

@@ -1,4 +1,3 @@
-using System;
 using PagHiper.Domain.Entities;
 using PagHiper.Dto.Boleto;
 

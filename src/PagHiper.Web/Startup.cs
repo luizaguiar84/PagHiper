@@ -1,14 +1,12 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PagHiper.Application;
 using PagHiper.Infra;
 using PagHiper.Infra.MySql;
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
 namespace PagHiper.Web
 {
@@ -35,7 +33,7 @@ namespace PagHiper.Web
 			services.AddInfraDependency();
 
 			if (DatabaseConfiguration.DatabaseType == DatabaseType.MySQL)
-				services.AddMySQLDependency(DatabaseConfiguration);
+				services.AddMySqlDependency(DatabaseConfiguration);
 			else
 				throw new NotSupportedException("No database configuration found");
 		}

@@ -22,7 +22,7 @@ namespace PagHiper.Web.Controllers
 		{
 			return View(await _context.Leads.ToListAsync());
 		}
-        public async Task<IActionResult> Final()
+        public IActionResult Final()
         {
             return View();
         }

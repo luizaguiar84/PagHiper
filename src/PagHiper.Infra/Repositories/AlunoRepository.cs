@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PagHiper.Domain.Entities.Aluno;
@@ -19,53 +18,31 @@ namespace PagHiper.Infra.Repositories
 
 		public void Delete(int alunoId)
 		{
-			try
-			{
-				var aluno = GetById(alunoId);
-				_context.Aluno.Remove(aluno);
-				_context.SaveChanges();
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var aluno = GetById(alunoId);
+			_context.Aluno.Remove(aluno);
+			_context.SaveChanges();
 		}
 
 		public Aluno Add(Aluno aluno)
 		{
-			try
-			{
-				var ret = _context.Add(aluno);
-				_context.SaveChanges();
-				return ret.Entity;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			var ret = _context.Add(aluno);
+			_context.SaveChanges();
+			return ret.Entity;
 		}
 
 		public Aluno GetById(int alunoId)
 		{
-			try
-			{
-				var aluno = 
-					_context.Aluno
-						.AsNoTracking()
-						.Include(a => a.Endereco)
-						.Include(a => a.Contatos)
-						.Include(a => a.Parcelas)
-						.Include(a => a.Matricula)
-						.Include(a => a.Turmas)
-						.SingleOrDefault(a => a.Id == alunoId);
+			var aluno = 
+				_context.Aluno
+					.AsNoTracking()
+					.Include(a => a.Endereco)
+					.Include(a => a.Contatos)
+					.Include(a => a.Parcelas)
+					.Include(a => a.Matricula)
+					.Include(a => a.Turmas)
+					.SingleOrDefault(a => a.Id == alunoId);
 				
-				return aluno;
-			}
-
-			catch (Exception)
-			{
-				throw;
-			}
+			return aluno;
 		}
 
 		public List<Aluno> GetAll()
