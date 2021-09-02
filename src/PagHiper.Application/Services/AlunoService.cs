@@ -22,7 +22,7 @@ namespace PagHiper.Application.Services
 	        return alunos;
         }
 
-        public Aluno GetById(Guid id)
+        public Aluno GetById(int id)
         {
 	        return _alunoRepository.GetById(id);
         }
@@ -37,7 +37,7 @@ namespace PagHiper.Application.Services
             _alunoRepository.Update(aluno);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             _alunoRepository.Delete(id);
         }

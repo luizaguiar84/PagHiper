@@ -6,9 +6,9 @@ namespace PagHiper.Infra.Repositories.Interfaces
 {
 	public interface IBoletoRepository
 	{
-		void Delete(Guid id);
+		void Delete(int id);
 		void Add(Boleto boleto);
-		Boleto GetById(Guid id);
+		Boleto GetById(int id);
 		List<Boleto> GetAll();
 	}
 }

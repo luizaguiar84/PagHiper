@@ -10,10 +10,10 @@ namespace PagHiper.Application.Interfaces
 	    public string GetDigitableLineBoleto(Boleto boleto);
 	    public BoletoResponseDto GetBoleto(Boleto boleto);
 	    public Boleto GetAll();
-        public Boleto GetById(Guid id);
+        public Boleto GetById(int id);
         public void Add(Boleto boleto);
         public void Update(Boleto boleto);
         public void Remove(Boleto boleto);
-        public bool Exists(Guid id);
+        public bool Exists(int id);
     }
 }

@@ -8,7 +8,7 @@ namespace PagHiper.Domain.Entities.Aluno
 		public string Contato { get; set; }
 		public string Observacao { get; set; }
 		public Aluno Aluno { get; set; }
-		public Guid AlunoId { get; set; }
+		public int AlunoId { get; set; }
 
 	}
 }

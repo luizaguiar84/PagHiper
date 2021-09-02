@@ -4,7 +4,7 @@ namespace PagHiper.Domain.Entities.Aluno
 {
 	public class AlunoParcelas : BaseEntity
 	{
-		public Guid AlunoId { get; set; }
+		public int AlunoId { get; set; }
 		public string TipoPagamentoId { get; set; }
 		public DateTime DataVencimento { get; set; }
 		public decimal Valor { get; set; }

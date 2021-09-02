@@ -7,6 +7,11 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210826032334_Initial.cs" />
     <Compile Remove="Migrations\20210826032334_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210826033611_Initial.cs" />
+    <Compile Remove="Migrations\20210826033611_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210901023535_novosCamposEmLead.cs" />
+    <Compile Remove="Migrations\20210901023535_novosCamposEmLead.Designer.cs" />
+    <Compile Remove="Migrations\MySqlCrudDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

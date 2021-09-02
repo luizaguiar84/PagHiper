@@ -16,7 +16,7 @@ namespace PagHiper.Infra.Repositories
 			this._context = context;
 		}
 
-		public void Delete(Guid id)
+		public void Delete(int id)
 		{
 			try
 			{
@@ -43,7 +43,7 @@ namespace PagHiper.Infra.Repositories
 			}
 		}
 
-		public Boleto GetById(Guid Id)
+		public Boleto GetById(int Id)
 		{
 			try
 			{

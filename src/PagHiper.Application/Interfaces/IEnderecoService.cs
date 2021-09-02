@@ -7,9 +7,9 @@ namespace PagHiper.Application.Interfaces
     public interface IEnderecoService
     {
         public IEnumerable<Endereco> GetAll();
-        public Endereco GetById(Guid id);
+        public Endereco GetById(int id);
         public void Update(Endereco endereco);
-        void Delete(Guid id);
+        void Delete(int id);
         void Add(Endereco endereco);
     }
 }

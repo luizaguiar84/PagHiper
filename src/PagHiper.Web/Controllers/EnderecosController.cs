@@ -24,7 +24,7 @@ namespace PagHiper.Web.Controllers
         }
 
         // GET: Enderecos/Details/5
-        public async Task<IActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(int id)
         {
             
             var endereco = _enderecoService.GetById(id);
@@ -55,7 +55,7 @@ namespace PagHiper.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                endereco.Id = Guid.NewGuid();
+                //endereco.Id = Guid.NewGuid();
                 _enderecoService.Add(endereco);
                 return RedirectToAction(nameof(Index));
             }
@@ -64,7 +64,7 @@ namespace PagHiper.Web.Controllers
         }
 
         // GET: Enderecos/Edit/5
-        public async Task<IActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(int id)
         {
             var endereco = _enderecoService.GetById(id);
             if (endereco == null)
@@ -75,7 +75,7 @@ namespace PagHiper.Web.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             _enderecoService.Delete(id);
             return RedirectToAction(nameof(Index));
@@ -87,7 +87,7 @@ namespace PagHiper.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, Endereco endereco)
+        public async Task<IActionResult> Edit(int id, Endereco endereco)
         {
             if (id != endereco.Id)
             {

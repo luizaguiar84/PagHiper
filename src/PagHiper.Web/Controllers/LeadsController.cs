@@ -27,7 +27,7 @@ namespace PagHiper.Web.Controllers
             return View();
         }
 		// GET: Leads/Details/5
-		public async Task<IActionResult> Details(Guid? id)
+		public async Task<IActionResult> Details(int? id)
 		{
 			if (id == null)
 			{
@@ -59,7 +59,7 @@ namespace PagHiper.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				lead.Id = Guid.NewGuid();
+				//lead.Id = Guid.NewGuid();
 				lead.DataCadastro = DateTime.Now;
 				lead.LastUpdate = DateTime.Now;
 
@@ -72,7 +72,7 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// GET: Leads/Edit/5
-		public async Task<IActionResult> Edit(Guid? id)
+		public async Task<IActionResult> Edit(int? id)
 		{
 			if (id == null)
 			{
@@ -92,7 +92,7 @@ namespace PagHiper.Web.Controllers
 		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(Guid id, [Bind("DataCadastro, Nome,Email,Telefone,Id")] Lead lead)
+		public async Task<IActionResult> Edit(int id, [Bind("DataCadastro, Nome,Email,Telefone,Id")] Lead lead)
 		{
 			if (id != lead.Id)
 			{
@@ -125,7 +125,7 @@ namespace PagHiper.Web.Controllers
 		}
 
 		// GET: Leads/Delete/5
-		public async Task<IActionResult> Delete(Guid? id)
+		public async Task<IActionResult> Delete(int? id)
 		{
 			if (id == null)
 			{
@@ -145,7 +145,7 @@ namespace PagHiper.Web.Controllers
 		// POST: Leads/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> DeleteConfirmed(Guid id)
+		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
 			var lead = await _context.Leads.FindAsync(id);
 			_context.Leads.Remove(lead);
@@ -153,7 +153,7 @@ namespace PagHiper.Web.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		private bool LeadExists(Guid id)
+		private bool LeadExists(int id)
 		{
 			return _context.Leads.Any(e => e.Id == id);
 		}

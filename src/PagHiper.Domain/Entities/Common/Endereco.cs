@@ -4,7 +4,7 @@ namespace PagHiper.Domain.Entities.Common
 {
 	public class Endereco : BaseEntity
 	{
-		public Guid AlunoId { get; set; }
+		public int AlunoId { get; set; }
 		
 		public Aluno.Aluno Aluno { get; set; }
 		public string Cep { get; set; }
