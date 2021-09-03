@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
+using PagHiper.Application.Directors;
 using PagHiper.Application.Interfaces;
 using PagHiper.Application.Services;
+using PagHiper.Domain.Entities;
 
 namespace PagHiper.Application
 {
@@ -11,8 +13,9 @@ namespace PagHiper.Application
             
             //services.AddTransient<IBoletoService, BoletoService>();
             services.AddTransient<IAlunoService, AlunoService>();
-            services.AddTransient<ILeadService, LeadService>();
-			
+            services.AddTransient<ILeadAppService, LeadAppAppService>();
+            
+            services.AddTransient<ILeadCreator, LeadCreator>();
             return services;
         }
 
