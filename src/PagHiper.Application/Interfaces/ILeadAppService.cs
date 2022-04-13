@@ -1,6 +1,6 @@
 ﻿namespace PagHiper.Application.Interfaces
 {
-	public interface ILeadService
+	public interface ILeadAppService
 	{
 	}
 }
