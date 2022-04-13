@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PagHiper.Application;
 using PagHiper.Infra;
 using PagHiper.Infra.MySql;
+using Paghiper.Infra.Sqlite;
 
 namespace PagHiper.Web
 {
@@ -34,6 +35,10 @@ namespace PagHiper.Web
 
 			if (DatabaseConfiguration.DatabaseType == DatabaseType.MySQL)
 				services.AddMySqlDependency(DatabaseConfiguration);
+			
+			else if (DatabaseConfiguration.DatabaseType == DatabaseType.Sqlite)
+				services.AddSqLiteDependency(DatabaseConfiguration);
+			
 			else
 				throw new NotSupportedException("No database configuration found");
 		}
