@@ -1,5 +1,6 @@
 using System;
 
+// ReSharper disable once CheckNamespace
 namespace PagHiper.Domain.Entities
 {
     public partial class Lead

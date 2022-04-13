@@ -10,5 +10,6 @@ namespace PagHiper.Infra.Repositories.Interfaces
 		Task<IEnumerable<Lead>> GetAll();
 		Task<int> CreateNew(Lead lead);
 		Task Delete(int id);
+		bool Exists(int id);
 	}
 }

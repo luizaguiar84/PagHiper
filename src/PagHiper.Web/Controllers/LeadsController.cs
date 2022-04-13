@@ -129,8 +129,7 @@ namespace PagHiper.Web.Controllers
 
     private bool LeadExists(int id)
     {
-      return true;
-      //return _context.Leads.Any(e => e.Id == id);
+      return _leadRepository.Exists(id);
     }
   }
 }

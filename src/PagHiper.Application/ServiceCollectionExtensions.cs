@@ -2,7 +2,6 @@ using Microsoft.Extensions.DependencyInjection;
 using PagHiper.Application.Directors;
 using PagHiper.Application.Interfaces;
 using PagHiper.Application.Services;
-using PagHiper.Domain.Entities;
 
 namespace PagHiper.Application
 {
