@@ -3,41 +3,44 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PagHiper.Infra.MySql.Context;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using PagHiper.Infra.Postgres.Context;
 
-namespace PagHiper.Infra.MySql.Migrations
+namespace PagHiper.Infra.Postgres.Migrations
 {
-    [DbContext(typeof(MySqlCrudDbContext))]
-    partial class MySqlCrudDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PostgresCrudDbContext))]
+    partial class PostgresCrudDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
                 .HasAnnotation("ProductVersion", "3.1.17")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.Aluno", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Cpf")
                         .HasColumnType("text");
 
                     b.Property<DateTimeOffset?>("DataAtualizacao")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTimeOffset?>("DataCadastro")
                         .IsRequired()
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTimeOffset?>("DataNascimento")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Nome")
                         .HasColumnType("text");
@@ -61,10 +64,10 @@ namespace PagHiper.Infra.MySql.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("StatusCadastro")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("StatusFinanceiro")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -75,10 +78,11 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Contato")
                         .HasColumnType("text");
@@ -100,10 +104,11 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("CampanhaId")
                         .HasColumnType("text");
@@ -112,7 +117,7 @@ namespace PagHiper.Infra.MySql.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTimeOffset?>("DataMatricula")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NumeroRegistro")
                         .HasColumnType("text");
@@ -124,7 +129,7 @@ namespace PagHiper.Infra.MySql.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -138,22 +143,23 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("DataPagamentoEfetuado")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("DataVencimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("NumeroParcelas")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("NumeroTotalParcelas")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("PagamentoEfetuado")
                         .HasColumnType("text");
@@ -165,10 +171,10 @@ namespace PagHiper.Infra.MySql.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("ValorEfetuado")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -182,19 +188,20 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTimeOffset>("DataIngresso")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Status")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<int?>("TurmaId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -209,7 +216,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ApiKey")
                         .HasColumnType("text");
@@ -227,7 +235,7 @@ namespace PagHiper.Infra.MySql.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("FixedDescription")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("LatePaymentFine")
                         .HasColumnType("text");
@@ -301,10 +309,11 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Bairro")
                         .HasColumnType("text");
@@ -339,10 +348,11 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("BoletoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -367,33 +377,34 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("AceitaPropaganda")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Cupom")
-                        .HasColumnType("varchar(7)")
+                        .HasColumnType("character varying(7)")
                         .HasMaxLength(7);
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("character varying(50)")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("LastUpdate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("varchar(14)")
+                        .HasColumnType("character varying(14)")
                         .HasMaxLength(14);
 
                     b.HasKey("Id");
@@ -405,7 +416,8 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Nome")
                         .HasColumnType("text");

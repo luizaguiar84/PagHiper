@@ -2,69 +2,70 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PagHiper.Infra.MySql.Context;
+using Paghiper.Infra.Sqlite.Context;
 
-namespace PagHiper.Infra.MySql.Migrations
+namespace Paghiper.Infra.Sqlite.Migrations
 {
-    [DbContext(typeof(MySqlCrudDbContext))]
-    partial class MySqlCrudDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SqliteCrudDbContext))]
+    [Migration("20220415145731_updates")]
+    partial class updates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.17")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "3.1.17");
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.Aluno", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataAtualizacao")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataCadastro")
                         .IsRequired()
-                        .HasColumnType("timestamp");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataNascimento")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Observacao")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ResponsavelCpf")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ResponsavelNome")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ResponsavelParentesco")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ResponsavelTelefone")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Rg")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("StatusCadastro")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("StatusFinanceiro")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -75,19 +76,19 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Contato")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Observacao")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Tipo")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -100,31 +101,31 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CampanhaId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CursoId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataMatricula")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NumeroRegistro")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PagamentoId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PagamentoTipoId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -138,37 +139,37 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("DataPagamentoEfetuado")
-                        .HasColumnType("datetime");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataVencimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("NumeroParcelas")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("NumeroTotalParcelas")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("PagamentoEfetuado")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PagamentoEfetuadoId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("TipoPagamentoId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("ValorEfetuado")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -182,19 +183,19 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("DataIngresso")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("TurmaId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -209,88 +210,88 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ApiKey")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DaysDueDate")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DiscountCents")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("EarlyPaymentDiscountsCents")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("EarlyPaymentDiscountsDays")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("FixedDescription")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LatePaymentFine")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NotificationUrl")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("OpenAfterDayDue")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("OrderId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PartnersId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerCity")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerComplement")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerCpfCnpj")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerDistrict")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerEmail")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerName")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerPhone")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerState")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerStreet")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PayerZipCode")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PerDayInterest")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SellerDescription")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShippingMethods")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShippingPriceCents")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("TypeBankSlip")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -301,31 +302,31 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AlunoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Bairro")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Cep")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Numero")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Rua")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Uf")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -339,22 +340,22 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("BoletoId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ItemId")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PriceCents")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Quantity")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -367,33 +368,33 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("AceitaPropaganda")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Cupom")
-                        .HasColumnType("varchar(7)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(7);
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("LastUpdate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(100);
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("varchar(14)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(14);
 
                     b.HasKey("Id");
@@ -405,10 +406,10 @@ namespace PagHiper.Infra.MySql.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
