@@ -30,6 +30,11 @@ namespace PagHiper.Infra
 			{
 				DatabaseType = DatabaseType.MySQLProd;
 			}
+			else if (DatabaseType.Postgres.ToString().Equals(ConnectionStringName, StringComparison.CurrentCultureIgnoreCase))
+			{
+				DatabaseType = DatabaseType.Postgres;
+			}
+			
 			else
 			{
 				throw new NotSupportedException($"Invalid ConnectionString name '{ConnectionStringName}'.");
@@ -43,6 +48,7 @@ namespace PagHiper.Infra
 	{
 		Sqlite,
 		MySQL,
+		Postgres,
 		MySQLProd
 	}
 }
