@@ -9,8 +9,8 @@ using Paghiper.Infra.Sqlite.Context;
 namespace Paghiper.Infra.Sqlite.Migrations
 {
     [DbContext(typeof(SqliteCrudDbContext))]
-    [Migration("20210728024145_atualizandoContexto")]
-    partial class atualizandoContexto
+    [Migration("20220422013300_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,9 +20,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.Aluno", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Cpf")
                         .HasColumnType("TEXT");
@@ -31,6 +31,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataCadastro")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset?>("DataNascimento")
@@ -60,11 +61,11 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.Property<string>("Rg")
                         .HasColumnType("TEXT");
 
-                    b.Property<char>("StatusCadastro")
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("StatusCadastro")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<char>("StatusFinanceiro")
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("StatusFinanceiro")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -73,12 +74,12 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoContato", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid?>("AlunoId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Contato")
                         .HasColumnType("TEXT");
@@ -98,12 +99,12 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoMatricula", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AlunoId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CampanhaId")
                         .HasColumnType("TEXT");
@@ -136,12 +137,12 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoParcelas", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AlunoId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("DataPagamentoEfetuado")
                         .HasColumnType("TEXT");
@@ -180,12 +181,12 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoTurma", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid?>("AlunoId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("DataIngresso")
                         .HasColumnType("TEXT");
@@ -193,8 +194,8 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid?>("TurmaId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("TurmaId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -207,8 +208,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Boleto", b =>
                 {
-                    b.Property<string>("OrderId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ApiKey")
                         .HasColumnType("TEXT");
@@ -219,13 +221,28 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.Property<string>("DiscountCents")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("EarlyPaymentDiscountsCents")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EarlyPaymentDiscountsDays")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("FixedDescription")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("Id")
+                    b.Property<string>("LatePaymentFine")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NotificationUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OpenAfterDayDue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PartnersId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PayerCity")
@@ -261,6 +278,12 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.Property<string>("PayerZipCode")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PerDayInterest")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SellerDescription")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ShippingMethods")
                         .HasColumnType("TEXT");
 
@@ -270,19 +293,19 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.Property<string>("TypeBankSlip")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.ToTable("Boleto");
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Common.Endereco", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AlunoId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Bairro")
                         .HasColumnType("TEXT");
@@ -315,14 +338,17 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Item", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("BoletoOrderId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("BoletoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ItemId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PriceCents")
@@ -333,16 +359,54 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BoletoOrderId");
+                    b.HasIndex("BoletoId");
 
                     b.ToTable("Item");
                 });
 
+            modelBuilder.Entity("PagHiper.Domain.Entities.Lead", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AceitaPropaganda")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Cupom")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(7);
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(14);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lead");
+                });
+
             modelBuilder.Entity("PagHiper.Domain.Entities.Turma", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
@@ -357,7 +421,8 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithMany("Contatos")
                         .HasForeignKey("AlunoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Aluno.AlunoMatricula", b =>
@@ -383,7 +448,8 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     b.HasOne("PagHiper.Domain.Entities.Aluno.Aluno", "Aluno")
                         .WithMany("Turmas")
                         .HasForeignKey("AlunoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PagHiper.Domain.Entities.Turma", "Turma")
                         .WithMany()
@@ -401,9 +467,11 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             modelBuilder.Entity("PagHiper.Domain.Entities.Item", b =>
                 {
-                    b.HasOne("PagHiper.Domain.Entities.Boleto", null)
+                    b.HasOne("PagHiper.Domain.Entities.Boleto", "Boleto")
                         .WithMany("Items")
-                        .HasForeignKey("BoletoOrderId");
+                        .HasForeignKey("BoletoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

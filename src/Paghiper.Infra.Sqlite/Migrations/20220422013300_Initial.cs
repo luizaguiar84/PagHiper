@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Paghiper.Infra.Sqlite.Migrations
 {
-    public partial class atualizandoContexto : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,34 +11,36 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "Aluno",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Cpf = table.Column<string>(nullable: true),
                     Rg = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
                     DataNascimento = table.Column<DateTimeOffset>(nullable: true),
-                    DataCadastro = table.Column<DateTimeOffset>(nullable: true),
+                    DataCadastro = table.Column<DateTimeOffset>(nullable: false),
                     DataAtualizacao = table.Column<DateTimeOffset>(nullable: true),
                     ResponsavelNome = table.Column<string>(nullable: true),
                     ResponsavelCpf = table.Column<string>(nullable: true),
                     ResponsavelParentesco = table.Column<string>(nullable: true),
                     ResponsavelTelefone = table.Column<string>(nullable: true),
-                    StatusCadastro = table.Column<char>(nullable: false),
-                    StatusFinanceiro = table.Column<char>(nullable: false),
+                    StatusCadastro = table.Column<bool>(nullable: false),
+                    StatusFinanceiro = table.Column<bool>(nullable: false),
                     Observacao = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Alunos", x => x.Id);
+                    table.PrimaryKey("PK_Aluno", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Boleto",
                 columns: table => new
                 {
-                    OrderId = table.Column<string>(nullable: false),
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     ApiKey = table.Column<string>(nullable: true),
+                    OrderId = table.Column<string>(nullable: true),
                     PayerEmail = table.Column<string>(nullable: true),
                     PayerName = table.Column<string>(nullable: true),
                     PayerCpfCnpj = table.Column<string>(nullable: true),
@@ -54,20 +56,47 @@ namespace Paghiper.Infra.Sqlite.Migrations
                     DiscountCents = table.Column<string>(nullable: true),
                     ShippingPriceCents = table.Column<string>(nullable: true),
                     ShippingMethods = table.Column<string>(nullable: true),
+                    PartnersId = table.Column<string>(nullable: true),
+                    SellerDescription = table.Column<string>(nullable: true),
+                    LatePaymentFine = table.Column<string>(nullable: true),
+                    PerDayInterest = table.Column<string>(nullable: true),
+                    EarlyPaymentDiscountsDays = table.Column<string>(nullable: true),
+                    EarlyPaymentDiscountsCents = table.Column<string>(nullable: true),
+                    OpenAfterDayDue = table.Column<string>(nullable: true),
                     FixedDescription = table.Column<bool>(nullable: false),
                     DaysDueDate = table.Column<string>(nullable: true),
                     TypeBankSlip = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Boletos", x => x.OrderId);
+                    table.PrimaryKey("PK_Boleto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lead",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    AceitaPropaganda = table.Column<bool>(nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: true),
+                    Telefone = table.Column<string>(maxLength: 14, nullable: false),
+                    Cupom = table.Column<string>(maxLength: 7, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lead", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Turma",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -79,17 +108,18 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "AlunoContato",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Tipo = table.Column<string>(nullable: true),
                     Contato = table.Column<string>(nullable: true),
                     Observacao = table.Column<string>(nullable: true),
-                    AlunoId = table.Column<Guid>(nullable: true)
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AlunoContato", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AlunoContato_Alunos_AlunoId",
+                        name: "FK_AlunoContato_Aluno_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
@@ -100,21 +130,22 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "AlunoMatricula",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    AlunoId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     NumeroRegistro = table.Column<string>(nullable: true),
                     Valor = table.Column<decimal>(nullable: false),
                     PagamentoTipoId = table.Column<string>(nullable: true),
                     PagamentoId = table.Column<string>(nullable: true),
                     CursoId = table.Column<string>(nullable: true),
                     DataMatricula = table.Column<DateTimeOffset>(nullable: true),
-                    CampanhaId = table.Column<string>(nullable: true)
+                    CampanhaId = table.Column<string>(nullable: true),
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AlunoMatricula", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AlunoMatricula_Alunos_AlunoId",
+                        name: "FK_AlunoMatricula_Aluno_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
@@ -125,8 +156,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "AlunoParcelas",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    AlunoId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AlunoId = table.Column<int>(nullable: false),
                     TipoPagamentoId = table.Column<string>(nullable: true),
                     DataVencimento = table.Column<DateTime>(nullable: false),
                     Valor = table.Column<decimal>(nullable: false),
@@ -141,7 +173,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 {
                     table.PrimaryKey("PK_AlunoParcelas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AlunoParcelas_Alunos_AlunoId",
+                        name: "FK_AlunoParcelas_Aluno_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
@@ -152,8 +184,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "Endereco",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    AlunoId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AlunoId = table.Column<int>(nullable: false),
                     Cep = table.Column<string>(nullable: true),
                     Rua = table.Column<string>(nullable: true),
                     Numero = table.Column<string>(nullable: true),
@@ -166,7 +199,7 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 {
                     table.PrimaryKey("PK_Endereco", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Endereco_Alunos_AlunoId",
+                        name: "FK_Endereco_Aluno_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
@@ -177,38 +210,41 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 name: "Item",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    BoletoId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Quantity = table.Column<string>(nullable: true),
-                    PriceCents = table.Column<string>(nullable: true),
-                    BoletoOrderId = table.Column<string>(nullable: true)
+                    ItemId = table.Column<string>(nullable: true),
+                    PriceCents = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Item", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Item_Boletos_BoletoOrderId",
-                        column: x => x.BoletoOrderId,
+                        name: "FK_Item_Boleto_BoletoId",
+                        column: x => x.BoletoId,
                         principalTable: "Boleto",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AlunoTurma",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     DataIngresso = table.Column<DateTimeOffset>(nullable: false),
-                    TurmaId = table.Column<Guid>(nullable: true),
+                    TurmaId = table.Column<int>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
-                    AlunoId = table.Column<Guid>(nullable: true)
+                    AlunoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AlunoTurma", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AlunoTurma_Alunos_AlunoId",
+                        name: "FK_AlunoTurma_Aluno_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Aluno",
                         principalColumn: "Id",
@@ -255,9 +291,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Item_BoletoOrderId",
+                name: "IX_Item_BoletoId",
                 table: "Item",
-                column: "BoletoOrderId");
+                column: "BoletoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -279,6 +315,9 @@ namespace Paghiper.Infra.Sqlite.Migrations
 
             migrationBuilder.DropTable(
                 name: "Item");
+
+            migrationBuilder.DropTable(
+                name: "Lead");
 
             migrationBuilder.DropTable(
                 name: "Turma");
